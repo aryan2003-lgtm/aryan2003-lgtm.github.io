@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions | A. N. Mehta & Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#07091A;--gold:#C9A45A;--gold-lt:#E8C87E;--white:#F8F6F2;--muted:rgba(248,246,242,0.55);}
+html,body{height:100%;overflow:hidden;}
+body{background:#000;color:var(--white);font-family:'Cormorant Garamond',Georgia,serif;cursor:none;}
+#cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+#cursor-ring{position:fixed;width:38px;height:38px;border:1px solid rgba(201,164,90,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+
+/* SIDEBAR */
+#sb-trigger{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:850;background:var(--gold);width:26px;padding:1.2rem 0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
+#sb-trigger span{display:block;width:12px;height:1.5px;background:var(--navy);}
+#sidebar{position:fixed;left:-330px;top:0;bottom:0;width:310px;background:#06081A;z-index:1000;transition:left .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;border-right:1px solid rgba(201,164,90,0.10);}
+#sidebar.open{left:0;}
+#sb-ov{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;opacity:0;pointer-events:none;transition:opacity .4s;}
+#sb-ov.show{opacity:1;pointer-events:all;}
+.sbi{padding:2.5rem 2rem;}
+.sbc{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1;}
+.sbc:hover{color:var(--gold);}
+.sb-logo{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(201,164,90,0.12);}
+.sb-logo img{height:44px;width:auto;filter:brightness(1.4);}
+.sb-firm{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--gold);}
+.sb-desc{font-size:0.88rem;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(201,164,90,0.08);}
+.sb-nav{list-style:none;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(201,164,90,0.08);}
+.sb-nav li a{display:block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:0.85rem 0;border-bottom:1px solid rgba(248,246,242,0.04);transition:color .3s,padding-left .3s;}
+.sb-nav li a:hover{color:var(--gold);padding-left:0.5rem;}
+.sb-ct-title{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.sb-ci{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.85rem;font-size:0.85rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(7,9,26,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,164,90,0.08);}
+.nav-brand{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+.nav-brand img{height:62px;width:auto;filter:brightness(1.4);}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;letter-spacing:0.05em;color:var(--gold);display:block;}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,164,90,0.55);margin-top:2px;display:block;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:0.55;transition:opacity .3s,color .3s;}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+.nav-cta{color:var(--navy)!important;background:var(--gold);padding:0.6rem 1.4rem;opacity:1!important;transition:background .3s!important;}
+.nav-cta:hover{background:var(--gold-lt)!important;}
+
+/* SCENE ENGINE */
+#scene-container{position:fixed;inset:0;}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
+.scene.active{opacity:1;pointer-events:all;}
+.scene-bg{position:absolute;inset:0;}
+.scene-canvas{position:absolute;inset:0;width:100%;height:100%;}
+
+/* SPLIT LAYOUT — left = canvas, right = text panel */
+.scene-split{position:absolute;inset:0;z-index:10;display:flex;align-items:stretch;pointer-events:none;}
+.split-left{flex:1;}/* empty — canvas draws here at W*0.32 */
+.split-right{width:440px;flex-shrink:0;background:rgba(5,7,20,0.85);backdrop-filter:blur(16px);border-left:4px solid var(--gold);padding:5rem 2.8rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:1.1rem;pointer-events:all;overflow-y:auto;}
+
+/* TEXT ELEMENTS — animated in on scene active */
+.svc-num{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(14px);transition:opacity .7s .3s,transform .7s .3s;}
+.scene.active .svc-num{opacity:1;transform:translateY(0);}
+
+.svc-name{font-size:clamp(2.6rem,4vw,3.8rem);font-weight:300;line-height:1.0;opacity:0;transform:translateY(18px);transition:opacity .8s .45s,transform .8s .45s;}
+.scene.active .svc-name{opacity:1;transform:translateY(0);}
+.svc-name em{font-style:italic;color:var(--gold);}
+
+.svc-divider{width:50px;height:1px;background:rgba(201,164,90,0.4);opacity:0;transition:opacity .6s .55s;}
+.scene.active .svc-divider{opacity:1;}
+
+/* TAGLINE — enlarged, more prominent */
+.svc-subtitle{font-size:clamp(1.35rem,2.2vw,1.75rem);font-style:italic;font-weight:300;color:rgba(201,164,90,0.85);line-height:1.35;opacity:0;transform:translateY(12px);transition:opacity .8s .6s,transform .8s .6s;}
+.scene.active .svc-subtitle{opacity:1;transform:translateY(0);}
+
+.svc-body{font-size:1rem;font-weight:300;line-height:1.8;color:var(--muted);opacity:0;transition:opacity .8s .75s;}
+.scene.active .svc-body{opacity:1;}
+
+.svc-btn{display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:0.85rem 1.6rem;text-decoration:none;align-self:flex-start;margin-top:0.3rem;opacity:0;transition:opacity .8s .9s,background .3s,transform .2s;}
+.scene.active .svc-btn{opacity:1;}
+.svc-btn:hover{background:var(--gold-lt);transform:translateY(-2px);}
+
+/* OPENING SCENE — full centered */
+.scene-full-center{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 10vw;pointer-events:none;}
+.scene-full-center *{pointer-events:all;}
+.open-eyebrow{font-family:'DM Mono',monospace;font-size:1.15rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;transform:translateY(16px);transition:opacity .7s .3s,transform .7s .3s;text-shadow:0 0 20px rgba(201,164,90,0.3);}
+.scene.active .open-eyebrow{opacity:1;transform:translateY(0);}
+.open-title{font-size:clamp(3.5rem,7vw,7rem);font-weight:300;line-height:1.0;margin-bottom:1.8rem;opacity:0;transform:translateY(24px);transition:opacity .8s .5s,transform .8s .5s;}
+.scene.active .open-title{opacity:1;transform:translateY(0);}
+.open-title em{font-style:italic;color:var(--gold);}
+.open-body{font-size:1.1rem;font-weight:300;line-height:1.75;color:var(--muted);max-width:580px;opacity:0;transition:opacity .8s .72s;}
+.scene.active .open-body{opacity:1;}
+
+/* CLOSING SCENE — full centered */
+.scene-close-wrap{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 8vw 4rem;pointer-events:none;}
+.scene-close-wrap *{pointer-events:all;}
+.close-eyebrow{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;transform:translateY(14px);transition:opacity .7s .3s,transform .7s .3s;}
+.scene.active .close-eyebrow{opacity:1;transform:translateY(0);}
+.close-title{font-size:clamp(3.5rem,8vw,8.5rem);font-weight:300;line-height:0.95;margin-bottom:2.5rem;opacity:0;transform:translateY(24px);transition:opacity .8s .5s,transform .8s .5s;}
+.scene.active .close-title{opacity:1;transform:translateY(0);}
+.close-title em{font-style:italic;color:var(--gold);}
+.close-body{font-size:1.1rem;font-weight:300;line-height:1.75;color:var(--muted);max-width:680px;margin-bottom:0.6rem;opacity:0;transition:opacity .8s .7s;}
+.scene.active .close-body{opacity:1;}
+.close-cta{display:inline-flex;align-items:center;gap:0.8rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:1.1rem 2.8rem;text-decoration:none;opacity:0;transform:translateY(14px);transition:opacity .8s .9s,transform .8s .9s,background .3s;}
+.scene.active .close-cta{opacity:1;transform:translateY(0);}
+.close-cta:hover{background:var(--gold-lt);}
+
+/* PROGRESS DOTS */
+#sp{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:0.9rem;align-items:flex-end;}
+.sp-item{display:flex;align-items:center;gap:0.7rem;cursor:pointer;}
+.sp-dot{width:5px;height:5px;border-radius:50%;background:rgba(201,164,90,0.2);transition:background .4s,transform .4s;}
+.sp-item.on .sp-dot{background:var(--gold);transform:scale(1.7);}
+.sp-lbl{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,164,90,0.4);opacity:0;transform:translateX(8px);transition:opacity .3s,transform .3s;white-space:nowrap;}
+.sp-item:hover .sp-lbl,.sp-item.on .sp-lbl{opacity:1;transform:translateX(0);}
+
+/* SCROLL HINT */
+#scroll-hint{position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:100;display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,246,242,0.28);transition:opacity .5s;}
+#scroll-hint.hide{opacity:0;pointer-events:none;}
+.sh-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--gold),transparent);animation:drop 2s ease-in-out infinite;}
+@keyframes drop{0%{transform:scaleY(0) translateY(-100%);opacity:0}40%{opacity:1}100%{transform:scaleY(1) translateY(100%);opacity:0}}
+
+/* SCENE BACKGROUNDS — cold to warm */
+#bg-0{background:#000000;}
+#bg-1{background:radial-gradient(ellipse at 32% 50%,#03060f,#000 70%);}
+#bg-2{background:radial-gradient(ellipse at 32% 50%,#060810,#010205 70%);}
+#bg-3{background:radial-gradient(ellipse at 32% 50%,#050710,#010104 70%);}
+#bg-4{background:radial-gradient(ellipse at 32% 55%,#0d0a04,#030200 70%);}
+#bg-5{background:radial-gradient(ellipse at 32% 50%,#100d04,#040300 70%);}
+#bg-6{background:radial-gradient(ellipse at 32% 45%,#140f05,#060400 70%);}
+#bg-7{background:radial-gradient(ellipse at 32% 50%,#180d05,#080400 70%);}
+#bg-8{background:radial-gradient(ellipse at 32% 70%,#221306,#0a0500 65%);}
+#bg-9{background:radial-gradient(ellipse at 50% 50%,#281806,#100a02 65%);}
+
+/* ============= MOBILE & TABLET RESPONSIVE ============= */
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--gold);}
+
+@media(max-width:900px){
+  .nav-links{display:none !important;}
+  .nav-hamburger{display:flex;}
+  #sb-trigger{display:none;}
+}
+@media(max-width:768px){
+  #addr-bar{display:none;}
+  #nav{padding:1rem 1.5rem;}
+  .nav-logo-main{font-size:1.2rem;}
+  .nav-logo-sub{font-size:0.4rem;}
+  footer{padding:3rem 1.5rem 2rem;}
+  .f-grid{grid-template-columns:1fr !important;gap:2rem;}
+  .f-bot{flex-direction:column;gap:0.5rem;text-align:center;}
+  #cursor,#cursor-ring{display:none !important;}
+  body{cursor:auto !important;}
+}
+@media(max-width:480px){
+  #nav{padding:0.8rem 1rem;}
+  .nav-logo-main{font-size:1rem;}
+  .nav-logo-sub{font-size:0.38rem;}
+  .nav-brand img{height:42px !important;}
+}
+
+@media(max-width:1024px){
+  #nav{padding:1rem 2rem;}
+  .split-right{width:380px;padding:4rem 2rem 3rem;}
+  .svc-name{font-size:clamp(2rem,3.5vw,3rem);}
+}
+@media(max-width:900px){
+  .nav-links{display:none !important;}
+  .nav-hamburger{display:flex;}
+  #sb-trigger{display:none;}
+  #sp{right:0.8rem;}
+  .sp-lbl{display:none;}
+}
+@media(max-width:768px){
+  #nav{padding:0.8rem 1rem;}
+  .nav-logo-main{font-size:1.1rem;}
+  .nav-logo-sub{font-size:0.38rem;}
+  .nav-brand img{height:42px !important;filter:brightness(1.4) !important;}
+  .scene-split{flex-direction:column;}
+  .split-left{flex:0;height:40vh;}
+  .split-right{width:100%;border-left:none;border-top:3px solid var(--gold);padding:2.5rem 1.5rem 2rem;backdrop-filter:blur(20px);background:rgba(5,7,20,0.92);}
+  .svc-name{font-size:clamp(1.8rem,5vw,2.5rem);}
+  .svc-subtitle{font-size:clamp(1rem,2vw,1.3rem);}
+  .svc-body{font-size:0.9rem;}
+  .scene-full-center{padding:4rem 1.5rem;}
+  .open-title{font-size:clamp(2.2rem,6vw,4rem);}
+  .open-body{font-size:0.95rem;}
+  .open-eyebrow{font-size:0.8rem;letter-spacing:0.2em;}
+  .scene-close-wrap{padding:4rem 1.5rem;}
+  .close-title{font-size:clamp(2.2rem,6vw,5rem);}
+  .close-body{font-size:0.95rem;}
+  #sp{display:none;}
+  #scroll-hint{bottom:1.5rem;}
+  #cursor,#cursor-ring{display:none !important;}
+  body{cursor:auto !important;}
+}
+@media(max-width:480px){
+  .open-title{font-size:clamp(1.8rem,5.5vw,3rem);}
+  .open-eyebrow{font-size:0.65rem;}
+  .svc-name{font-size:clamp(1.5rem,4.5vw,2rem);}
+  .svc-subtitle{font-size:1rem;}
+  .split-right{padding:2rem 1.2rem;}
+  .close-title{font-size:clamp(1.8rem,5.5vw,3.5rem);}
+}
+
+
+/* MOBILE STATIC FALLBACK */
+#mobile-solutions{display:none;}
+@media(max-width:768px){
+  #scene-container,#sp,#scroll-hint{display:none !important;}
+  html,body{height:auto;overflow:auto;}
+  #mobile-solutions{display:block;padding-top:80px;}
+  .ms-hero{padding:8rem 1.5rem 4rem;text-align:center;background:var(--navy);border-bottom:1px solid rgba(201,164,90,0.08);}
+  .ms-hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+  .ms-hero-title{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem;}
+  .ms-hero-title em{font-style:italic;color:var(--gold);}
+  .ms-hero-body{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto;}
+  .ms-card{padding:3.5rem 1.5rem;border-bottom:1px solid rgba(201,164,90,0.06);}
+  .ms-card:nth-child(odd){background:rgba(13,18,38,0.5);}
+  .ms-card:nth-child(even){background:var(--navy);}
+  .ms-num{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+  .ms-name{font-size:clamp(2rem,5vw,2.8rem);font-weight:300;line-height:1.05;margin-bottom:0.8rem;}
+  .ms-name em{font-style:italic;color:var(--gold);}
+  .ms-div{width:40px;height:1px;background:rgba(201,164,90,0.4);margin:1.2rem 0;}
+  .ms-sub{font-size:1.15rem;font-style:italic;font-weight:300;color:rgba(201,164,90,0.8);line-height:1.4;margin-bottom:1.2rem;}
+  .ms-body{font-size:0.95rem;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:1.5rem;}
+  .ms-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:0.8rem 1.5rem;text-decoration:none;}
+  .ms-close{padding:5rem 1.5rem;text-align:center;background:linear-gradient(135deg,rgba(40,24,6,0.4),var(--navy));}
+  .ms-close-title{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:300;line-height:1.0;margin-bottom:2rem;}
+  .ms-close-title em{font-style:italic;color:var(--gold);}
+  .ms-close-line{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;}
+  .ms-close-firm{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2rem);font-weight:600;color:var(--gold);margin-bottom:1rem;}
+  .ms-close-tagline{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.7;text-align:center;margin-bottom:2.5rem;}
+  .ms-close-cta{display:inline-flex;align-items:center;gap:0.8rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:1rem 2.2rem;text-decoration:none;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<!-- SIDEBAR -->
+<div id="sb-trigger" onclick="toggleSB()"><span></span><span></span><span></span></div>
+<div id="sb-ov" onclick="toggleSB()"></div>
+<div id="sidebar"><div class="sbi">
+<button class="sbc" onclick="toggleSB()">×</button>
+<div class="sb-logo"><img src="CA_LOGO-removebg-preview.png" alt="CA India"><span class="sb-firm">A. N. Mehta & Co.</span></div>
+<p class="sb-desc">A. N. Mehta & Co. — two dedicated Chartered Accountants specialising in GST, taxation, audit, valuation, and business advisory.</p>
+<ul class="sb-nav">
+<li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+<li><a href="solutions.html">Solutions</a></li><li><a href="services.html">Service Model</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+<p class="sb-ct-title">Get In Touch</p>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Siddha Esplanade, 6 JN Road, 10th Fl, Suite 1008, Kolkata – 700013</div>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+91 8910827253</div>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1d8dfd7de9fd0dfdcd4d9c5d0d2def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></div>
+</div></div>
+
+<!-- NAV -->
+<nav id="nav">
+<a href="index.html" class="nav-brand">
+<img src="CA_LOGO-removebg-preview.png" alt="CA India">
+<div><span class="nav-logo-main">A. N. Mehta & Co.</span><span class="nav-logo-sub">Chartered Accountants</span></div>
+</a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Service Model</a></li>
+<li><a href="solutions.html" class="active">Solutions</a></li>
+<li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+</ul>
+<button class="nav-hamburger" onclick="toggleSB()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PROGRESS DOTS -->
+<div id="sp">
+<div class="sp-item on" onclick="goScene(0)"><span class="sp-lbl">The Storm</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(1)"><span class="sp-lbl">Audit</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(2)"><span class="sp-lbl">Direct Tax</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(3)"><span class="sp-lbl">GST</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(4)"><span class="sp-lbl">Valuation</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(5)"><span class="sp-lbl">Advisory</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(6)"><span class="sp-lbl">Due Diligence</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(7)"><span class="sp-lbl">Assurance</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(8)"><span class="sp-lbl">Startup</span><div class="sp-dot"></div></div>
+<div class="sp-item" onclick="goScene(9)"><span class="sp-lbl">Full Light</span><div class="sp-dot"></div></div>
+</div>
+
+<div id="scroll-hint"><div class="sh-line"></div><span>Scroll</span></div>
+
+<div id="scene-container">
+
+<!-- SCENE 0: THE STORM -->
+<div class="scene active" id="scene-0">
+  <div id="bg-0" class="scene-bg"></div>
+  <canvas id="canvas-storm" class="scene-canvas"></canvas>
+  <div class="scene-full-center">
+    <p class="open-eyebrow">A. N. Mehta & Co. · Chartered Accountants</p>
+    <h1 class="open-title">Every business<br>carries an<br><em>invisible weight.</em></h1>
+    <p class="open-body">Numbers that demand answers. Tax obligations that don't wait. Decisions that cannot be wrong. This is the world before the right CA firm enters the picture. Scroll to watch order emerge from chaos.</p>
+  </div>
+</div>
+
+<!-- SCENE 1: AUDIT & ASSURANCE -->
+<div class="scene" id="scene-1">
+  <div id="bg-1" class="scene-bg"></div>
+  <canvas id="canvas-audit" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">01 / 08 — The Foundation</p>
+      <h1 class="svc-name">Audit &<br><em>Assurance.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">The grid assembles.<br>The truth emerges.</p>
+      <p class="svc-body">We don't just check your books. We hold a mirror to your business and show you exactly what is there — nothing hidden, nothing softened. Every entry reviewed. Every figure certified. The audit is the moment a business sees itself clearly for the first time.</p>
+      <a href="services.html#panel-0" class="svc-btn">View Audit Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 2: DIRECT TAXATION -->
+<div class="scene" id="scene-2">
+  <div id="bg-2" class="scene-bg"></div>
+  <canvas id="canvas-rivers" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">02 / 08 — The River</p>
+      <h1 class="svc-name">Direct<br><em>Taxation.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">Every rupee earned<br>has a journey.</p>
+      <p class="svc-body">Income flows in from every source. The question is — how much stays with you? We transform tax liability into tax strategy. Multiple income streams, intelligently converged, optimally structured. More retained. Less lost.</p>
+      <a href="services.html#panel-1" class="svc-btn">View Direct Tax Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 3: GST -->
+<div class="scene" id="scene-3">
+  <div id="bg-3" class="scene-bg"></div>
+  <canvas id="canvas-network" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">03 / 08 — The Web</p>
+      <h1 class="svc-name">Indirect Tax<br>& <em>GST.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">Every node. Every<br>thread. We know it.</p>
+      <p class="svc-body">GST binds every invoice, every movement, every transaction. Deadlines that don't forgive. GSTR-1 by the 11th. GSTR-3B by the 20th. Annual returns by December. We ensure you never miss one — and always claim what is yours.</p>
+      <a href="services.html#panel-2" class="svc-btn">View GST Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 4: VALUATION -->
+<div class="scene" id="scene-4">
+  <div id="bg-4" class="scene-bg"></div>
+  <canvas id="canvas-scale" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">04 / 08 — The Weighing</p>
+      <h1 class="svc-name">Valuation &<br><em>Advisory.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">What is this business<br>truly worth?</p>
+      <p class="svc-body">Not what you think. Not what you hope. The real number — the one that holds in a boardroom, a courtroom, a deal room. As the scale balances, the spotlight finds the truth. Backed by rigorous methodology. Defended with professional conviction.</p>
+      <a href="services.html#panel-3" class="svc-btn">View Valuation Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 5: BUSINESS ADVISORY -->
+<div class="scene" id="scene-5">
+  <div id="bg-5" class="scene-bg"></div>
+  <canvas id="canvas-compass" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">05 / 08 — The Compass</p>
+      <h1 class="svc-name">Business<br><em>Advisory.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">We never<br>lose north.</p>
+      <p class="svc-body">Knowing your worth is not enough. You need direction. Growth. Compliance. Restructuring. Exit. Every business crossroads has a bearing. We orient your decisions, your strategy, and your future — with unwavering precision and commercial clarity.</p>
+      <a href="services.html#panel-4" class="svc-btn">View Advisory Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 6: DUE DILIGENCE -->
+<div class="scene" id="scene-6">
+  <div id="bg-6" class="scene-bg"></div>
+  <canvas id="canvas-lens" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">06 / 08 — The Lens</p>
+      <h1 class="svc-name">Due<br><em>Diligence.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">See everything.<br>Miss nothing.</p>
+      <p class="svc-body">Before you sign. Before you invest. Before you acquire. Under our lens — tax exposures, related party transactions, disputed liabilities, compliance gaps — all revealed. We are the lens that changes deals and protects your capital.</p>
+      <a href="services.html#panel-5" class="svc-btn">View Due Diligence Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 7: MANAGEMENT ASSURANCE -->
+<div class="scene" id="scene-7">
+  <div id="bg-7" class="scene-bg"></div>
+  <canvas id="canvas-shield" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">07 / 08 — The Shield</p>
+      <h1 class="svc-name">Management<br><em>Assurance.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">Not a watchdog.<br>A guardian.</p>
+      <p class="svc-body">We don't wait for problems to appear. We build the systems, the controls, the frameworks that prevent them. Layered, architectural, impenetrable. Your organisation guarded and strengthened from within — by design, not by reaction.</p>
+      <a href="services.html#panel-6" class="svc-btn">View Assurance Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 8: BUSINESS STARTUP -->
+<div class="scene" id="scene-8">
+  <div id="bg-8" class="scene-bg"></div>
+  <canvas id="canvas-dawn" class="scene-canvas"></canvas>
+  <div class="scene-split">
+    <div class="split-left"></div>
+    <div class="split-right">
+      <p class="svc-num">08 / 08 — The Dawn</p>
+      <h1 class="svc-name">Business<br><em>Startup.</em></h1>
+      <div class="svc-divider"></div>
+      <p class="svc-subtitle">Before the first rupee.<br>We are there.</p>
+      <p class="svc-body">Every milestone of your journey — incorporation, GST registration, first ITR, statutory audit, Series A readiness. We are present at every step, ensuring your growth is built on a foundation that never cracks. The trajectory only goes one way: up.</p>
+      <a href="services.html#panel-7" class="svc-btn">View Startup Services →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 9: THE CLOSE -->
+<div class="scene" id="scene-9">
+  <div id="bg-9" class="scene-bg"></div>
+  <canvas id="canvas-light" class="scene-canvas"></canvas>
+  <div class="scene-close-wrap">
+    <h1 class="close-title">Eight Services.<br>One Standard.<br><em>One Firm.</em></h1>
+    <p class="close-body">From the storm of financial chaos to the full light of clarity — this is what it means to have</p>
+    <p class="close-body" style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:600;color:var(--gold);margin-bottom:0.6rem;max-width:none;">A. N. Mehta & Co.</p>
+    <p class="close-body" style="text-align:center;align-self:center;max-width:680px;margin-bottom:2rem;">Whatever the challenge, whatever the complexity, whatever the stakes — we carry it with you.</p>
+    <a href="contact.html" class="close-cta">Begin the Conversation →</a>
+  </div>
+</div>
+
+</div><!-- /scene-container -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* CURSOR */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cur.style.left=mx+'px';cur.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='52px';ring.style.height='52px';});el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='38px';ring.style.height='38px';});});
+
+/* SCENE SYSTEM */
+const scenes=document.querySelectorAll('.scene');
+const spItems=document.querySelectorAll('.sp-item');
+let current=0,transitioning=false;
+function goScene(n){
+  if(n===current||transitioning||n<0||n>=scenes.length)return;
+  transitioning=true;
+  scenes[current].classList.remove('active');spItems[current].classList.remove('on');
+  current=n;scenes[current].classList.add('active');spItems[current].classList.add('on');
+  document.getElementById('scroll-hint').classList.toggle('hide',current===scenes.length-1);
+  startCanvas(current);
+  setTimeout(()=>{transitioning=false;},1300);
+}
+let wAcc=0;
+window.addEventListener('wheel',e=>{e.preventDefault();wAcc+=e.deltaY;if(Math.abs(wAcc)>80){goScene(current+(wAcc>0?1:-1));wAcc=0;}},{passive:false});
+let tY=null;
+window.addEventListener('touchstart',e=>{tY=e.touches[0].clientY;},{passive:true});
+window.addEventListener('touchend',e=>{if(tY===null)return;const dy=tY-e.changedTouches[0].clientY;if(Math.abs(dy)>40)goScene(current+(dy>0?1:-1));tY=null;},{passive:true});
+window.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='PageDown')goScene(current+1);if(e.key==='ArrowUp'||e.key==='PageUp')goScene(current-1);});
+
+/* CANVAS MANAGEMENT */
+const rafs={};
+function stopAll(){Object.keys(rafs).forEach(k=>{cancelAnimationFrame(rafs[k]);delete rafs[k];});}
+function startCanvas(n){stopAll();[storm,audit,rivers,network,scale,compass,lens,shield,dawn,light][n]();}
+
+/* ═══════════════════════════════
+   SCENE 0 — STORM
+═══════════════════════════════ */
+function storm(){
+  const c=document.getElementById('canvas-storm');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  const SY=['₹','$','GST','TDS','ITR','P&L','AUDIT','FY26','TAX','ITAT','80C','CBIC','ITC','GSTR','44AB','%','∑','EBITDA','NAV','PAT','ROE','CAGR','NPA'];
+  const pts=[];for(let i=0;i<100;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2,t:SY[Math.floor(Math.random()*SY.length)],sz:Math.random()*15+8,op:Math.random()*.5+.1,col:Math.random()<.3?'rgba(201,164,90,OP)':'rgba(248,246,242,OP)'});
+  let t=0;
+  (function draw(){rafs[0]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.012;
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<-80)p.x=W+80;if(p.x>W+80)p.x=-80;if(p.y<-30)p.y=H+30;if(p.y>H+30)p.y=-30;const fade=Math.min(1,(Math.sin(t+p.x*.01)+1)*.5)*p.op+.05;ctx.font=`${p.sz}px 'DM Mono',monospace`;ctx.fillStyle=p.col.replace('OP',fade.toFixed(2));ctx.fillText(p.t,p.x,p.y);});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);if(d<100){ctx.strokeStyle=`rgba(201,164,90,${(.05*(1-d/100)).toFixed(3)})`;ctx.lineWidth=.4;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 1 — AUDIT
+   Ledger rows filling in, scan line, checkmark
+═══════════════════════════════ */
+function audit(){
+  const c=document.getElementById('canvas-audit');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  const LW=W*.60;
+  const ROWS=[
+    {label:'Turnover',val:'₹ 48,20,00,000',flag:false},
+    {label:'Cost of Goods Sold',val:'₹ 31,45,00,000',flag:false},
+    {label:'Gross Profit',val:'₹ 16,75,00,000',flag:false},
+    {label:'Operating Expenses',val:'₹ 6,82,00,000',flag:false},
+    {label:'EBITDA',val:'₹ 9,93,00,000',flag:false},
+    {label:'Related Party Txn',val:'₹ 2,24,00,000',flag:true},
+    {label:'Tax Provision',val:'₹ 1,86,00,000',flag:false},
+    {label:'PAT',val:'₹ 5,83,00,000',flag:false},
+  ];
+  let t=0,prog=0,scanY=0,ckP=0,rowProgress=[];
+  ROWS.forEach(()=>rowProgress.push(0));
+  const rowH=Math.min(H/12,52);
+  const startY=H*.18;
+  (function draw(){rafs[1]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.016;
+  if(prog<1)prog+=.005;
+  // Grid background
+  ctx.strokeStyle='rgba(201,164,90,0.07)';ctx.lineWidth=.6;
+  for(let x=0;x<LW;x+=65){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=65){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(LW,y);ctx.stroke();}
+  // Ledger rows filling in
+  ROWS.forEach((row,i)=>{
+    if(rowProgress[i]<1&&t>i*0.28)rowProgress[i]=Math.min(1,rowProgress[i]+.025);
+    const ry=startY+i*rowH;
+    const rp=rowProgress[i];
+    if(rp<=0)return;
+    // Row background
+    const bg=row.flag?'rgba(201,100,50,0.08)':'rgba(201,164,90,0.04)';
+    ctx.fillStyle=bg;ctx.fillRect(0,ry,LW*rp,rowH-4);
+    // Row border
+    ctx.strokeStyle=row.flag?'rgba(201,100,50,0.3)':'rgba(201,164,90,0.12)';
+    ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(0,ry+rowH-4);ctx.lineTo(LW*rp,ry+rowH-4);ctx.stroke();
+    // Label
+    ctx.font=`${Math.min(13,rowH*.28)}px 'DM Mono',monospace`;
+    ctx.fillStyle=`rgba(248,246,242,${.55*rp})`;ctx.fillText(row.label,18,ry+rowH*.62);
+    // Value
+    const vw=ctx.measureText(row.val).width;
+    ctx.fillStyle=`rgba(201,164,90,${.75*rp})`;ctx.fillText(row.val,LW*.58,ry+rowH*.62);
+    // Flag icon
+    if(row.flag&&rp>.5){ctx.fillStyle=`rgba(220,100,50,${.8*rp})`;ctx.font=`${Math.min(13,rowH*.28)}px 'DM Mono',monospace`;ctx.fillText('⚠ FLAGGED',LW*.78,ry+rowH*.62);}
+  });
+  // Divider line col headers
+  ctx.strokeStyle='rgba(201,164,90,0.25)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,startY-8);ctx.lineTo(LW*prog,startY-8);ctx.stroke();
+  ctx.font='11px DM Mono,monospace';ctx.fillStyle='rgba(201,164,90,0.5)';
+  if(prog>.1){ctx.fillText('LINE ITEM',18,startY-18);ctx.fillText('AMOUNT',LW*.58,startY-18);ctx.fillText('STATUS',LW*.78,startY-18);}
+  // Scanning amber line
+  scanY=(scanY+1.8)%(ROWS.length*rowH+startY+20);
+  const actualScan=startY-10+scanY;
+  if(actualScan>startY&&actualScan<startY+ROWS.length*rowH){
+    const sg=ctx.createLinearGradient(0,actualScan-20,0,actualScan+20);sg.addColorStop(0,'transparent');sg.addColorStop(.5,'rgba(201,164,90,0.35)');sg.addColorStop(1,'transparent');ctx.fillStyle=sg;ctx.fillRect(0,actualScan-20,LW,40);}
+  // Checkmark when all rows loaded
+  if(t>ROWS.length*0.28+1){
+    if(ckP<1)ckP+=.01;
+    const cx=LW*.32,cy=H*.8,sc=Math.min(60,H*.08)*ckP;
+    // Glow
+    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,sc*2);cg.addColorStop(0,'rgba(201,164,90,0.15)');cg.addColorStop(1,'transparent');ctx.fillStyle=cg;ctx.fillRect(cx-sc*2,cy-sc*2,sc*4,sc*4);
+    ctx.beginPath();ctx.moveTo(cx-sc*.8,cy);ctx.lineTo(cx-sc*.15,cy+sc*.75);ctx.lineTo(cx+sc*.9,cy-sc*.7);
+    ctx.strokeStyle=`rgba(201,164,90,${Math.min(1,ckP*2)})`;ctx.lineWidth=3;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+    if(ckP>.8){ctx.font=`bold ${Math.min(14,H*.018)}px 'DM Mono',monospace`;ctx.fillStyle=`rgba(201,164,90,${(ckP-.8)*5})`;ctx.textAlign='center';ctx.fillText('AUDIT CERTIFIED',cx,cy+sc+20);ctx.textAlign='left';}}
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 2 — DIRECT TAX
+   Income funnel: multiple streams → convergence → Govt/Retained split
+═══════════════════════════════ */
+function rivers(){
+  const c=document.getElementById('canvas-rivers');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  const LW=W*.60;let t=0;
+  const SOURCES=[
+    {label:'Salary Income',y:H*.15,color:'rgba(201,164,90,OP)',speed:.9},
+    {label:'Business Income',y:H*.32,color:'rgba(201,164,90,OP)',speed:1.1},
+    {label:'Capital Gains',y:H*.50,color:'rgba(201,164,90,OP)',speed:.8},
+    {label:'Other Sources',y:H*.67,color:'rgba(201,164,90,OP)',speed:1.0},
+  ];
+  const CX=LW*.52,CY=H*.42;
+  (function draw(){rafs[2]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.02;
+  // Draw each income stream flowing to convergence
+  SOURCES.forEach((s,i)=>{
+    const wave=Math.sin(t*s.speed+i)*18;
+    for(let layer=2;layer>=0;layer--){
+      const op=[.25,.12,.04][layer];const wid=[2,7,14][layer];
+      ctx.beginPath();ctx.moveTo(0,s.y+wave);
+      // Bezier curve to convergence point
+      ctx.bezierCurveTo(LW*.25,s.y+wave,LW*.38,CY,CX,CY);
+      ctx.strokeStyle=s.color.replace('OP',op.toString());ctx.lineWidth=wid;ctx.stroke();
+    }
+    // Source label
+    if(t>i*.5){
+      const fade=Math.min(1,(t-i*.5)*2);
+      ctx.font=`bold 11px 'DM Mono',monospace`;ctx.fillStyle=`rgba(201,164,90,${fade*.6})`;ctx.fillText(s.label,12,s.y-8+wave);
+    }
+  });
+  // Convergence glow
+  const rg=ctx.createRadialGradient(CX,CY,0,CX,CY,45);rg.addColorStop(0,'rgba(201,164,90,0.35)');rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.beginPath();ctx.arc(CX,CY,45,0,Math.PI*2);ctx.fill();
+  // ₹ at convergence
+  ctx.font=`bold 32px 'Cormorant Garamond',serif`;ctx.fillStyle=`rgba(201,164,90,${.7+Math.sin(t)*.15})`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('₹',CX,CY);ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  // After convergence: two output streams
+  if(t>2){
+    const fade=Math.min(1,(t-2)*.6);
+    // Govt stream (smaller, going down-right)
+    for(let l=1;l>=0;l--){
+      ctx.beginPath();ctx.moveTo(CX,CY);ctx.bezierCurveTo(CX+60,CY+30,CX+100,CY+80,LW*.88,H*.72);
+      ctx.strokeStyle=`rgba(180,80,80,${[.35,.08][l]*fade})`;ctx.lineWidth=[2,8][l];ctx.stroke();
+    }
+    ctx.font=`bold 11px 'DM Mono',monospace`;ctx.fillStyle=`rgba(180,80,80,${fade*.65})`;ctx.fillText('TAX PAID',LW*.76,H*.78);
+    // Retained stream (larger, going right)
+    for(let l=1;l>=0;l--){
+      ctx.beginPath();ctx.moveTo(CX,CY);ctx.bezierCurveTo(CX+60,CY-20,CX+100,CY-60,LW*.88,H*.22);
+      ctx.strokeStyle=`rgba(105,176,69,${[.4,.10][l]*fade})`;ctx.lineWidth=[3,12][l];ctx.stroke();
+    }
+    ctx.font=`bold 11px 'DM Mono',monospace`;ctx.fillStyle=`rgba(105,176,69,${fade*.75})`;ctx.fillText('YOUR WEALTH',LW*.74,H*.17);
+    // Arrow labels
+    if(fade>.5){
+      ctx.font=`10px 'DM Mono',monospace`;ctx.fillStyle=`rgba(248,246,242,${(fade-.5)*2*.4})`;
+      ctx.fillText('Optimised by A.N.Mehta & Co.',CX+8,CY-30);}
+  }
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 3 — GST NETWORK
+   Brighter labels + deadline badges
+═══════════════════════════════ */
+function network(){
+  const c=document.getElementById('canvas-network');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;const LW=W*.60;
+  const NODES_DATA=[
+    {label:'GSTIN',deadline:null},{label:'ITC',deadline:null},
+    {label:'CGST',deadline:null},{label:'SGST',deadline:null},
+    {label:'IGST',deadline:null},{label:'E-WAY BILL',deadline:null},
+    {label:'GSTR-1',deadline:'→ 11th'},{label:'GSTR-3B',deadline:'→ 20th'},
+    {label:'RCM',deadline:null},{label:'HSN',deadline:null},
+    {label:'GSTR-9/9C',deadline:'→ 31 Dec'},
+  ];
+  const nodes=[];
+  for(let i=0;i<NODES_DATA.length;i++){
+    nodes.push({x:30+Math.random()*(LW-60),y:30+Math.random()*(H-60),vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*3+2.5,phase:Math.random()*Math.PI*2,...NODES_DATA[i]});
+  }
+  // Central GST hub
+  nodes.push({x:LW*.42,y:H*.45,vx:0,vy:0,r:12,phase:0,label:'GST',deadline:null,hub:true});
+  let t=0;
+  (function draw(){rafs[3]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.018;
+  nodes.forEach(n=>{if(!n.hub){n.x+=n.vx;n.y+=n.vy;if(n.x<20||n.x>LW-20)n.vx*=-1;if(n.y<20||n.y>H-20)n.vy*=-1;}});
+  // Connections
+  nodes.forEach((a,i)=>nodes.forEach((b,j)=>{if(j<=i)return;const d=Math.hypot(a.x-b.x,a.y-b.y);const mD=a.hub||b.hub?280:140;if(d<mD){ctx.strokeStyle=`rgba(201,164,90,${((a.hub||b.hub?.30:.10)*(1-d/mD)).toFixed(3)})`;ctx.lineWidth=a.hub||b.hub?1:.4;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}));
+  // Nodes
+  nodes.forEach(n=>{
+    const pulse=n.hub?1:.75+Math.sin(t*2+n.phase)*.25;
+    const rg=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4*pulse);
+    rg.addColorStop(0,`rgba(201,164,90,${n.hub?.7:.5})`);rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.beginPath();ctx.arc(n.x,n.y,n.r*5*pulse,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=`rgba(201,164,90,${n.hub?.9:.65})`;ctx.beginPath();ctx.arc(n.x,n.y,n.r*pulse,0,Math.PI*2);ctx.fill();
+    // Labels — larger and brighter
+    if(n.label){
+      const sz=n.hub?15:12;
+      ctx.font=`bold ${sz}px 'DM Mono',monospace`;
+      ctx.fillStyle=`rgba(201,164,90,${n.hub?.95:.8})`;
+      ctx.fillText(n.label,n.x+n.r*1.5+4,n.y-n.r*1.5);
+    }
+    // Deadline badge
+    if(n.deadline){
+      const bx=n.x+n.r*1.5+4;const by=n.y+n.r+14;
+      const bw=ctx.measureText(n.deadline).width+12;
+      ctx.fillStyle='rgba(201,164,90,0.18)';ctx.fillRect(bx-2,by-11,bw,16);
+      ctx.strokeStyle='rgba(201,164,90,0.55)';ctx.lineWidth=.8;ctx.strokeRect(bx-2,by-11,bw,16);
+      ctx.font=`bold 10px 'DM Mono',monospace`;ctx.fillStyle='rgba(201,164,90,0.95)';ctx.fillText(n.deadline,bx+4,by+1);
+    }
+  });
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 4 — VALUATION
+   Balance scale + spotlight intensifying as scale balances + ₹ on pans
+═══════════════════════════════ */
+function scale(){
+  const c=document.getElementById('canvas-scale');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  let t=0,angle=0,target=0,balance=0;
+  (function draw(){rafs[4]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.015;
+  target=Math.sin(t*.35)*.18;angle+=(target-angle)*.04;
+  // Balance factor: 0 = swinging, 1 = balanced
+  balance=1-Math.abs(angle)/.18;
+  const cx=W*.32,cy=H*.46,armLen=Math.min(W*.22,195);
+  // SPOTLIGHT — intensifies as scale balances
+  const spotIntensity=.05+balance*.18;
+  const sp=ctx.createRadialGradient(cx,cy-180,0,cx,cy,H*.75);
+  sp.addColorStop(0,`rgba(201,164,90,${spotIntensity})`);
+  sp.addColorStop(.4,`rgba(201,164,90,${spotIntensity*.3})`);
+  sp.addColorStop(1,'transparent');
+  ctx.fillStyle=sp;ctx.fillRect(0,0,W,H);
+  // Vertical rod
+  ctx.strokeStyle=`rgba(201,164,90,${.5+balance*.2})`;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(cx,cy-160);ctx.lineTo(cx,cy+20);ctx.stroke();
+  // Crossbar
+  const lx=cx+Math.cos(Math.PI+angle)*armLen,ly=cy+Math.sin(angle)*armLen*.3;
+  const rx=cx+Math.cos(angle)*armLen,ry=cy-Math.sin(angle)*armLen*.3;
+  ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(rx,ry);ctx.strokeStyle=`rgba(201,164,90,${.65+balance*.15})`;ctx.lineWidth=1.5;ctx.stroke();
+  // Pivot
+  ctx.beginPath();ctx.arc(cx,cy,9,0,Math.PI*2);ctx.strokeStyle='rgba(201,164,90,0.75)';ctx.lineWidth=1.2;ctx.stroke();
+  // Pans with ₹ symbols
+  [[lx,ly],[rx,ry]].forEach(([px,py],idx)=>{
+    ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px,py+80);ctx.strokeStyle=`rgba(201,164,90,${.6+balance*.15})`;ctx.lineWidth=1.5;ctx.stroke();
+    ctx.beginPath();ctx.ellipse(px,py+80,52,13,0,0,Math.PI*2);ctx.strokeStyle=`rgba(201,164,90,${.5+balance*.2})`;ctx.lineWidth=1;ctx.stroke();
+    // Pan glow
+    const pg=ctx.createRadialGradient(px,py+80,0,px,py+80,52);
+    pg.addColorStop(0,`rgba(201,164,90,${.08+balance*.08})`);pg.addColorStop(1,'transparent');
+    ctx.fillStyle=pg;ctx.beginPath();ctx.ellipse(px,py+80,52,13,0,0,Math.PI*2);ctx.fill();
+    // ₹ on each pan
+    ctx.font=`bold ${18+balance*6}px 'Cormorant Garamond',serif`;
+    ctx.fillStyle=`rgba(201,164,90,${.45+balance*.35})`;
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('₹',px,py+80);
+    ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  });
+  // Top pin glow
+  const tg=ctx.createRadialGradient(cx,cy-160,0,cx,cy-160,30);
+  tg.addColorStop(0,`rgba(201,164,90,${.3+balance*.2})`);tg.addColorStop(1,'transparent');
+  ctx.fillStyle=tg;ctx.fillRect(cx-30,cy-188,60,56);
+  // When balanced: show "EQUILIBRIUM" label
+  if(balance>.85){
+    ctx.font=`${11+balance*3}px 'DM Mono',monospace`;
+    ctx.fillStyle=`rgba(201,164,90,${(balance-.85)*6*.7})`;
+    ctx.textAlign='center';ctx.fillText('VALUE ESTABLISHED',cx,cy+120);ctx.textAlign='left';
+  }
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 5 — COMPASS
+   N/S/E/W + NE/NW/SE/SW + business waypoints
+═══════════════════════════════ */
+function compass(){
+  const c=document.getElementById('canvas-compass');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  let t=0,nA=Math.random()*Math.PI*2;
+  const WAYPOINTS=[
+    {angle:-Math.PI/2,label:'N',size:18,ring:1.08,primary:true},
+    {angle:Math.PI/2,label:'S',size:13,ring:1.08,primary:true},
+    {angle:0,label:'E',size:13,ring:1.08,primary:true},
+    {angle:Math.PI,label:'W',size:13,ring:1.08,primary:true},
+    {angle:-Math.PI/4,label:'NE',size:10,ring:1.05,primary:false},
+    {angle:-3*Math.PI/4,label:'NW',size:10,ring:1.05,primary:false},
+    {angle:Math.PI/4,label:'SE',size:10,ring:1.05,primary:false},
+    {angle:3*Math.PI/4,label:'SW',size:10,ring:1.05,primary:false},
+  ];
+  const BIZ=[
+    {angle:-Math.PI*.15,label:'Growth',ring:.75},
+    {angle:Math.PI*.35,label:'Compliance',ring:.75},
+    {angle:Math.PI*.85,label:'Restructuring',ring:.75},
+    {angle:-Math.PI*.65,label:'Exit',ring:.75},
+  ];
+  (function draw(){rafs[5]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.018;
+  const cx=W*.32,cy=H/2,R=Math.min(W*.27,H*.36);
+  // Outer glow
+  const og=ctx.createRadialGradient(cx,cy,R*.4,cx,cy,R*1.3);og.addColorStop(0,'rgba(201,164,90,0.05)');og.addColorStop(1,'transparent');ctx.fillStyle=og;ctx.fillRect(0,0,W,H);
+  // Three rings
+  [R,R*.75,R*.45].forEach((r,i)=>{ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.strokeStyle=`rgba(201,164,90,${[.3,.18,.12][i]})`;ctx.lineWidth=[1.2,.8,.5][i];ctx.stroke();});
+  // Cardinal lines
+  ctx.strokeStyle='rgba(201,164,90,0.18)';ctx.lineWidth=.7;
+  for(let a=0;a<Math.PI*2;a+=Math.PI/2){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);ctx.stroke();}
+  // Diagonal lines
+  ctx.strokeStyle='rgba(201,164,90,0.08)';ctx.lineWidth=.5;
+  for(let a=Math.PI/4;a<Math.PI*2;a+=Math.PI/2){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*R*.8,cy+Math.sin(a)*R*.8);ctx.stroke();}
+  // Cardinal & intercardinal labels
+  WAYPOINTS.forEach(wp=>{
+    const px=cx+Math.cos(wp.angle)*R*wp.ring;const py=cy+Math.sin(wp.angle)*R*wp.ring;
+    ctx.font=`bold ${wp.size}px 'DM Mono',monospace`;
+    ctx.fillStyle=wp.primary?`rgba(201,164,90,${wp.angle===-Math.PI/2?.95:.7})`:'rgba(201,164,90,0.45)';
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(wp.label,px,py);
+    ctx.textAlign='left';ctx.textBaseline='alphabetic';
+    // North glow
+    if(wp.label==='N'){const ng=ctx.createRadialGradient(px,py,0,px,py,22);ng.addColorStop(0,'rgba(201,164,90,0.35)');ng.addColorStop(1,'transparent');ctx.fillStyle=ng;ctx.beginPath();ctx.arc(px,py,22,0,Math.PI*2);ctx.fill();}
+  });
+  // Business waypoints at ring intersections
+  BIZ.forEach(bw=>{
+    const px=cx+Math.cos(bw.angle)*R*bw.ring;const py=cy+Math.sin(bw.angle)*R*bw.ring;
+    const pulse=.5+Math.sin(t+bw.angle)*.2;
+    ctx.font=`10px 'DM Mono',monospace`;
+    ctx.fillStyle=`rgba(201,164,90,${pulse*.65})`;
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(bw.label,px,py);
+    ctx.textAlign='left';ctx.textBaseline='alphabetic';
+    ctx.beginPath();ctx.arc(px,py,3,0,Math.PI*2);ctx.fillStyle=`rgba(201,164,90,${pulse*.5})`;ctx.fill();
+  });
+  // Needle settling to North
+  nA+=((-Math.PI/2)-nA)*.03;
+  const na=nA,nLen=R*.52;
+  ctx.beginPath();ctx.moveTo(cx+Math.cos(na)*nLen,cy+Math.sin(na)*nLen);ctx.lineTo(cx+Math.cos(na+Math.PI/9)*nLen*.15,cy+Math.sin(na+Math.PI/9)*nLen*.15);ctx.lineTo(cx+Math.cos(na+Math.PI)*nLen*.22,cy+Math.sin(na+Math.PI)*nLen*.22);ctx.lineTo(cx+Math.cos(na-Math.PI/9)*nLen*.15,cy+Math.sin(na-Math.PI/9)*nLen*.15);ctx.closePath();ctx.fillStyle='rgba(201,164,90,0.85)';ctx.fill();
+  // Centre
+  const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,14);cg.addColorStop(0,'rgba(201,164,90,0.9)');cg.addColorStop(1,'transparent');ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,14,0,Math.PI*2);ctx.fill();
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 6 — DUE DILIGENCE
+   Magnifying lens scanning document fragments with flagged items
+═══════════════════════════════ */
+function lens(){
+  const c=document.getElementById('canvas-lens');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  const LW=W*.60;let t=0;
+  // Document items spread across left zone
+  const DOCS=[
+    {x:LW*.12,y:H*.22,label:'Revenue: ₹4.2 Cr',status:'OK',color:'rgba(105,176,69,OP)'},
+    {x:LW*.38,y:H*.18,label:'Related Party Txn: ₹80L',status:'FLAG',color:'rgba(220,100,50,OP)'},
+    {x:LW*.55,y:H*.32,label:'Tax Liability: DISPUTED',status:'FLAG',color:'rgba(220,100,50,OP)'},
+    {x:LW*.18,y:H*.45,label:'Compliance Status: ✓',status:'OK',color:'rgba(105,176,69,OP)'},
+    {x:LW*.44,y:H*.52,label:'NPA Risk: Flagged',status:'FLAG',color:'rgba(220,100,50,OP)'},
+    {x:LW*.08,y:H*.65,label:'Audit Trail: Verified',status:'OK',color:'rgba(105,176,69,OP)'},
+    {x:LW*.32,y:H*.72,label:'Risk Level: HIGH',status:'FLAG',color:'rgba(220,100,50,OP)'},
+    {x:LW*.52,y:H*.68,label:'Payables: ₹1.1 Cr',status:'OK',color:'rgba(201,164,90,OP)'},
+  ];
+  const lensR=Math.min(LW*.22,H*.25);
+  // Lens moves slowly in a figure-8 pattern
+  (function draw(){rafs[6]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.012;
+  const lcx=LW*.32+Math.sin(t*.4)*LW*.22;
+  const lcy=H*.42+Math.sin(t*.8)*H*.22;
+  // Draw all document items
+  DOCS.forEach(d=>{
+    const dist=Math.hypot(lcx-d.x,lcy-d.y);
+    const inLens=dist<lensR*.85;
+    const brightness=inLens?.95:.35;
+    // Item background
+    ctx.fillStyle=d.color.replace('OP',(brightness*.15).toFixed(2));
+    ctx.fillRect(d.x-4,d.y-13,ctx.measureText(d.label).width+16,20);
+    // Border highlight if in lens
+    if(inLens){ctx.strokeStyle=d.color.replace('OP','0.7');ctx.lineWidth=1;ctx.strokeRect(d.x-4,d.y-13,ctx.measureText(d.label).width+16,20);}
+    ctx.font=`bold 11px 'DM Mono',monospace`;
+    ctx.fillStyle=d.color.replace('OP',brightness.toFixed(2));
+    ctx.fillText(d.label,d.x+4,d.y);
+    // Flag icon if flagged and in lens
+    if(d.status==='FLAG'&&inLens){
+      ctx.font=`13px 'DM Mono',monospace`;ctx.fillStyle=`rgba(220,100,50,0.9)`;ctx.fillText('⚠',d.x-14,d.y);}
+  });
+  // Lens rings
+  for(let l=3;l>=1;l--){ctx.beginPath();ctx.arc(lcx,lcy,lensR+l*7,0,Math.PI*2);ctx.strokeStyle=`rgba(201,164,90,${.05/l})`;ctx.lineWidth=l*5;ctx.stroke();}
+  ctx.beginPath();ctx.arc(lcx,lcy,lensR,0,Math.PI*2);ctx.strokeStyle='rgba(201,164,90,0.65)';ctx.lineWidth=1.5;ctx.stroke();
+  // Handle
+  const hA=Math.PI*.42;ctx.beginPath();ctx.moveTo(lcx+Math.cos(hA)*lensR,lcy+Math.sin(hA)*lensR);ctx.lineTo(lcx+Math.cos(hA)*(lensR+90),lcy+Math.sin(hA)*(lensR+90));ctx.strokeStyle='rgba(201,164,90,0.7)';ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();
+  // Inner lens glow
+  const lg=ctx.createRadialGradient(lcx,lcy,0,lcx,lcy,lensR);lg.addColorStop(0,'rgba(201,164,90,0.04)');lg.addColorStop(1,'transparent');ctx.fillStyle=lg;ctx.beginPath();ctx.arc(lcx,lcy,lensR,0,Math.PI*2);ctx.fill();
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 7 — MANAGEMENT ASSURANCE / SHIELD
+═══════════════════════════════ */
+function shield(){
+  const c=document.getElementById('canvas-shield');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;let t=0;
+  function sp(cx,cy,w,h){ctx.beginPath();ctx.moveTo(cx,cy-h*.5);ctx.lineTo(cx+w*.5,cy-h*.22);ctx.lineTo(cx+w*.5,cy+h*.12);ctx.quadraticCurveTo(cx+w*.5,cy+h*.48,cx,cy+h*.5);ctx.quadraticCurveTo(cx-w*.5,cy+h*.48,cx-w*.5,cy+h*.12);ctx.lineTo(cx-w*.5,cy-h*.22);ctx.closePath();}
+  (function draw(){rafs[7]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.016;
+  const cx=W*.32,cy=H/2;
+  for(let i=0;i<4;i++){const ph=(t*.5+i*Math.PI*.5)%(Math.PI*2);const rg=ctx.createRadialGradient(cx,cy,0,cx,cy,155+(Math.sin(ph)*36)+i*50);rg.addColorStop(0,'transparent');rg.addColorStop(.7,`rgba(201,164,90,${.03-i*.005})`);rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.fillRect(0,0,W,H);}
+  [[290,350,.55],[210,260,.4],[135,180,.28]].forEach(([w,h,op])=>{sp(cx,cy-22,w,h);ctx.strokeStyle=`rgba(201,164,90,${op})`;ctx.lineWidth=1.2;ctx.stroke();});
+  const s=52+Math.sin(t)*4;ctx.beginPath();ctx.moveTo(cx-s*.7,cy-12);ctx.lineTo(cx-s*.1,cy+s*.55-12);ctx.lineTo(cx+s*.85,cy-s*.6-12);ctx.strokeStyle='rgba(201,164,90,0.72)';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 8 — BUSINESS STARTUP
+   Milestone-labelled growth chart
+═══════════════════════════════ */
+function dawn(){
+  const c=document.getElementById('canvas-dawn');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;
+  const LW=W*.58;let t=0;
+  const MILESTONES=[
+    {xr:.06,yr:.82,label:'Incorporation'},
+    {xr:.18,yr:.70,label:'GST Registration'},
+    {xr:.30,yr:.57,label:'First ITR Filed'},
+    {xr:.44,yr:.44,label:'IFC Framework'},
+    {xr:.58,yr:.30,label:'Statutory Audit'},
+    {xr:.72,yr:.18,label:'Series A Ready'},
+    {xr:.88,yr:.10,label:'Scale'},
+  ];
+  const pts=MILESTONES.map(m=>({x:LW*m.xr,y:H*m.yr,label:m.label}));
+  let lineP=0;
+  (function draw(){rafs[8]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.016;
+  if(lineP<1)lineP+=.004;
+  // Dawn glow
+  const dg=ctx.createRadialGradient(LW*.5,H,0,LW*.5,H,H*1.1);dg.addColorStop(0,`rgba(201,164,90,${.1+Math.sin(t*.3)*.03})`);dg.addColorStop(.5,'rgba(201,164,90,0.03)');dg.addColorStop(1,'transparent');ctx.fillStyle=dg;ctx.fillRect(0,0,W,H);
+  // Grid
+  ctx.strokeStyle='rgba(201,164,90,0.04)';ctx.lineWidth=.5;
+  for(let x=0;x<LW;x+=70){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=70){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(LW,y);ctx.stroke();}
+  // Axes
+  ctx.strokeStyle='rgba(201,164,90,0.2)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(LW*.03,H*.92);ctx.lineTo(LW*.97,H*.92);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(LW*.03,H*.08);ctx.lineTo(LW*.03,H*.92);ctx.stroke();
+  ctx.font='9px DM Mono,monospace';ctx.fillStyle='rgba(201,164,90,0.45)';
+  ctx.textAlign='center';ctx.fillText('TIME',LW*.5,H*.97);
+  ctx.save();ctx.translate(LW*.015,H*.5);ctx.rotate(-Math.PI/2);ctx.fillText('GROWTH',0,0);ctx.restore();ctx.textAlign='left';
+  // Draw line up to lineP
+  const totalPts=pts.length;const lineIdx=Math.floor(lineP*(totalPts-1));const lineRem=lineP*(totalPts-1)-lineIdx;
+  // Glow line
+  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<=lineIdx;i++)ctx.lineTo(pts[i].x,pts[i].y);
+  if(lineIdx<totalPts-1){ctx.lineTo(pts[lineIdx].x+(pts[lineIdx+1].x-pts[lineIdx].x)*lineRem,pts[lineIdx].y+(pts[lineIdx+1].y-pts[lineIdx].y)*lineRem);}
+  ctx.strokeStyle='rgba(201,164,90,0.10)';ctx.lineWidth=12;ctx.stroke();
+  // Main line
+  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<=lineIdx;i++)ctx.lineTo(pts[i].x,pts[i].y);
+  if(lineIdx<totalPts-1){ctx.lineTo(pts[lineIdx].x+(pts[lineIdx+1].x-pts[lineIdx].x)*lineRem,pts[lineIdx].y+(pts[lineIdx+1].y-pts[lineIdx].y)*lineRem);}
+  ctx.strokeStyle='rgba(201,164,90,0.65)';ctx.lineWidth=2;ctx.stroke();
+  // Milestone dots + labels
+  pts.forEach((p,i)=>{
+    const pProgress=Math.min(1,lineP*(totalPts-1)-i+1);
+    if(pProgress<=0)return;
+    // Dot glow
+    const rg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,i===totalPts-1?22:13);
+    rg.addColorStop(0,`rgba(201,164,90,${.6*pProgress})`);rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.beginPath();ctx.arc(p.x,p.y,i===totalPts-1?22:13,0,Math.PI*2);ctx.fill();
+    // Dot
+    ctx.fillStyle=`rgba(201,164,90,${.8*pProgress})`;ctx.beginPath();ctx.arc(p.x,p.y,i===totalPts-1?7:4.5,0,Math.PI*2);ctx.fill();
+    // Milestone label — appears as line reaches point
+    if(pProgress>.3){
+      const alpha=Math.min(1,(pProgress-.3)*2);
+      // Label box
+      ctx.font=`bold 10px 'DM Mono',monospace`;const lw=ctx.measureText(p.label).width+12;
+      const lx=p.x-lw/2;const ly=p.y-32;
+      ctx.fillStyle=`rgba(7,9,26,${alpha*.8})`;ctx.fillRect(lx,ly,lw,17);
+      ctx.strokeStyle=`rgba(201,164,90,${alpha*.55})`;ctx.lineWidth=.8;ctx.strokeRect(lx,ly,lw,17);
+      ctx.fillStyle=`rgba(201,164,90,${alpha*.9})`;ctx.textAlign='center';ctx.fillText(p.label,p.x,ly+12);ctx.textAlign='left';
+      // Connector line
+      ctx.beginPath();ctx.moveTo(p.x,p.y-8);ctx.lineTo(p.x,ly+17);ctx.strokeStyle=`rgba(201,164,90,${alpha*.35})`;ctx.lineWidth=.7;ctx.stroke();
+    }
+  });
+  })();
+}
+
+/* ═══════════════════════════════
+   SCENE 9 — FULL LIGHT (closing)
+═══════════════════════════════ */
+function light(){
+  const c=document.getElementById('canvas-light');c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');const W=innerWidth,H=innerHeight;let t=0;
+  (function draw(){rafs[9]=requestAnimationFrame(draw);ctx.clearRect(0,0,W,H);t+=.014;
+  const g1=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.7);g1.addColorStop(0,`rgba(201,164,90,${.12+Math.sin(t*.4)*.04})`);g1.addColorStop(.5,'rgba(201,164,90,0.04)');g1.addColorStop(1,'transparent');ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
+  for(let a=0;a<Math.PI*2;a+=Math.PI/9){ctx.beginPath();ctx.moveTo(W/2,H/2);ctx.lineTo(W/2+Math.cos(a+t*.05)*Math.max(W,H)*.6,H/2+Math.sin(a+t*.05)*Math.max(W,H)*.6);ctx.strokeStyle='rgba(201,164,90,0.02)';ctx.lineWidth=36;ctx.stroke();}
+  const sg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,85);sg.addColorStop(0,`rgba(201,164,90,${.32+Math.sin(t)*.1})`);sg.addColorStop(1,'transparent');ctx.fillStyle=sg;ctx.fillRect(W/2-85,H/2-85,170,170);
+  for(let i=0;i<26;i++){const px=W/2+Math.cos(t*.2+i*.42)*W*.38,py=H/2+Math.sin(t*.15+i*.55)*H*.32;ctx.fillStyle=`rgba(201,164,90,${.22+Math.sin(t+i)*.16})`;ctx.beginPath();ctx.arc(px,py,2+Math.sin(t+i)*1.3,0,Math.PI*2);ctx.fill();}
+  })();
+}
+
+/* SIDEBAR */
+function toggleSB(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sb-ov').classList.toggle('show');}
+
+/* START */
+storm();
+</script>
+
+
+<!-- MOBILE STATIC SOLUTIONS -->
+<div id="mobile-solutions">
+
+<div class="ms-hero">
+<p class="ms-hero-eyebrow">A. N. Mehta & Co. · Chartered Accountants</p>
+<h1 class="ms-hero-title">Every business carries an <em>invisible weight.</em></h1>
+<p class="ms-hero-body">Numbers that demand answers. Tax obligations that don't wait. Decisions that cannot be wrong. This is the world before the right CA firm enters the picture.</p>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">01 / 08 — The Foundation</p>
+<h2 class="ms-name">Audit & <em>Assurance.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">The grid assembles. The truth emerges.</p>
+<p class="ms-body">We don't just check your books. We hold a mirror to your business and show you exactly what is there — nothing hidden, nothing softened. Every entry reviewed. Every figure certified. The audit is the moment a business sees itself clearly for the first time.</p>
+<a href="services.html#panel-0" class="ms-btn">View Audit Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">02 / 08 — The River</p>
+<h2 class="ms-name">Direct <em>Taxation.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">Every rupee earned has a journey.</p>
+<p class="ms-body">Income flows in from every source. The question is — how much stays with you? We transform tax liability into tax strategy. Multiple income streams, intelligently converged, optimally structured. More retained. Less lost.</p>
+<a href="services.html#panel-1" class="ms-btn">View Direct Tax Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">03 / 08 — The Web</p>
+<h2 class="ms-name">Indirect Tax & <em>GST.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">Every node. Every thread. We know it.</p>
+<p class="ms-body">GST binds every invoice, every movement, every transaction. Deadlines that don't forgive. GSTR-1 by the 11th. GSTR-3B by the 20th. Annual returns by December. We ensure you never miss one — and always claim what is yours.</p>
+<a href="services.html#panel-2" class="ms-btn">View GST Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">04 / 08 — The Weighing</p>
+<h2 class="ms-name">Valuation & <em>Advisory.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">What is this business truly worth?</p>
+<p class="ms-body">Not what you think. Not what you hope. The real number — the one that holds in a boardroom, a courtroom, a deal room. As the scale balances, the spotlight finds the truth. Backed by rigorous methodology. Defended with professional conviction.</p>
+<a href="services.html#panel-3" class="ms-btn">View Valuation Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">05 / 08 — The Compass</p>
+<h2 class="ms-name">Business <em>Advisory.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">We never lose north.</p>
+<p class="ms-body">Knowing your worth is not enough. You need direction. Growth. Compliance. Restructuring. Exit. Every business crossroads has a bearing. We orient your decisions, your strategy, and your future — with unwavering precision and commercial clarity.</p>
+<a href="services.html#panel-4" class="ms-btn">View Advisory Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">06 / 08 — The Lens</p>
+<h2 class="ms-name">Due <em>Diligence.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">See everything. Miss nothing.</p>
+<p class="ms-body">Before you sign. Before you invest. Before you acquire. Under our lens — tax exposures, related party transactions, disputed liabilities, compliance gaps — all revealed. We are the lens that changes deals and protects your capital.</p>
+<a href="services.html#panel-5" class="ms-btn">View Due Diligence Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">07 / 08 — The Shield</p>
+<h2 class="ms-name">Management <em>Assurance.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">Not a watchdog. A guardian.</p>
+<p class="ms-body">We don't wait for problems to appear. We build the systems, the controls, the frameworks that prevent them. Layered, architectural, impenetrable. Your organisation guarded and strengthened from within — by design, not by reaction.</p>
+<a href="services.html#panel-6" class="ms-btn">View Assurance Services →</a>
+</div>
+
+<div class="ms-card">
+<p class="ms-num">08 / 08 — The Dawn</p>
+<h2 class="ms-name">Business <em>Startup.</em></h2>
+<div class="ms-div"></div>
+<p class="ms-sub">Before the first rupee. We are there.</p>
+<p class="ms-body">Every milestone of your journey — incorporation, GST registration, first ITR, statutory audit, Series A readiness. We are present at every step, ensuring your growth is built on a foundation that never cracks. The trajectory only goes one way: up.</p>
+<a href="services.html#panel-7" class="ms-btn">View Startup Services →</a>
+</div>
+
+<div class="ms-close">
+<h2 class="ms-close-title">Eight Services. One Standard. <em>One Firm.</em></h2>
+<p class="ms-close-line">From the storm of financial chaos to the full light of clarity — this is what it means to have</p>
+<p class="ms-close-firm">A. N. Mehta & Co.</p>
+<p class="ms-close-tagline">Whatever the challenge, whatever the complexity, whatever the stakes — we carry it with you.</p>
+<a href="contact.html" class="ms-close-cta">Begin the Conversation →</a>
+</div>
+
+</div>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/918910827253" target="_blank" rel="noopener noreferrer" id="wa-btn" aria-label="Chat on WhatsApp" style="position:fixed;bottom:2rem;right:2rem;z-index:900;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);transition:transform .3s,box-shadow .3s;text-decoration:none;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A
