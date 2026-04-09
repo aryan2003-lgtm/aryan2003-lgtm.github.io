@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. N. Mehta & Co. | Chartered Accountants</title>
+<meta property="og:site_name" content="A.N. Mehta &amp; Co.">
+<meta property="og:title" content="A.N. Mehta &amp; Co. | Chartered Accountants">
+<meta property="og:description" content="Eight Services. One Standard. Audit &amp; Assurance, Direct Taxation, Indirect Tax &amp; GST, Valuation, Business Advisory, Due Diligence and more.">
+<meta property="og:url" content="https://anmehtaco.com">
+<meta property="og:image" content="https://anmehtaco.com/android-chrome-512x512.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "A.N. Mehta & Co.",
+  "url": "https://anmehtaco.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://anmehtaco.com/android-chrome-512x512.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "A.N. Mehta & Co.",
+  "url": "https://anmehtaco.com"
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#07091A;--navy-mid:#0D1226;--gold:#C9A45A;--gold-lt:#E8C87E;--white:#F8F6F2;--muted:rgba(248,246,242,0.52);}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;cursor:none;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:rgba(201,164,90,0.4);}
+#cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+#cursor-ring{position:fixed;width:38px;height:38px;border:1px solid rgba(201,164,90,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+
+/* CA LOGO BADGE */
+/* SIDEBAR */
+#sb-trigger{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:850;background:var(--gold);width:26px;padding:1.2rem 0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;transition:width .25s;}
+#sb-trigger:hover{width:32px;}
+#sb-trigger span{display:block;width:12px;height:1.5px;background:var(--navy);}
+#sidebar{position:fixed;left:-330px;top:0;bottom:0;width:310px;background:#06081A;z-index:1000;transition:left .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;box-shadow:6px 0 40px rgba(0,0,0,0.6);border-right:1px solid rgba(201,164,90,0.10);}
+#sidebar.open{left:0;}
+#sb-ov{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;opacity:0;pointer-events:none;transition:opacity .4s;}
+#sb-ov.show{opacity:1;pointer-events:all;}
+.sbi{padding:2.5rem 2rem;}
+.sbc{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1;}
+.sbc:hover{color:var(--gold);}
+.sb-logo{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(201,164,90,0.12);}
+.sb-firm{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--gold);}
+.sb-desc{font-size:0.88rem;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(201,164,90,0.08);}
+.sb-nav{list-style:none;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(201,164,90,0.08);}
+.sb-nav li a{display:block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:0.85rem 0;border-bottom:1px solid rgba(248,246,242,0.04);transition:color .3s,padding-left .3s;}
+.sb-nav li a:hover{color:var(--gold);padding-left:0.5rem;}
+.sb-ct-title{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.sb-ci{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.85rem;font-size:0.85rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+/* ADDRESS BAR */
+#addr-bar{background:rgba(4,5,18,0.97);border-bottom:1px solid rgba(201,164,90,0.10);padding:0.45rem 5rem;display:flex;justify-content:space-between;align-items:center;}
+.addr-item{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:rgba(201,164,90,0.65);}
+.addr-right{display:flex;gap:2rem;}
+
+/* NAV */
+#nav{position:sticky;top:0;z-index:800;padding:1.2rem 5rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s;background:rgba(7,9,26,0.02);}
+#nav.scrolled{background:rgba(7,9,26,0.97);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(201,164,90,0.10);}
+.nav-brand{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;letter-spacing:0.05em;color:var(--gold);display:block;}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,164,90,0.55);margin-top:2px;display:block;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:0.6;transition:opacity .3s,color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{color:var(--navy)!important;background:var(--gold);padding:0.65rem 1.5rem;opacity:1!important;}
+.nav-cta:hover{background:var(--gold-lt)!important;}
+.nav-cta::after{display:none!important;}
+
+/* HERO SLIDESHOW */
+#hero{position:relative;height:100vh;overflow:hidden;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;}
+.slide.active{opacity:1;}
+.slide-img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 8s ease;}
+.slide.active .slide-img{transform:scale(1);}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(7,9,26,0.80) 0%,rgba(7,9,26,0.35) 60%,rgba(7,9,26,0.55) 100%);}
+.slide-content{position:absolute;bottom:10vh;left:8%;max-width:700px;}
+.slide-title{font-size:clamp(3.2rem,7vw,7.5rem);font-weight:300;line-height:1.0;margin-bottom:1.6rem;}
+.slide-title em{font-style:italic;color:var(--gold);}
+.slide-sub{font-size:1.2rem;font-weight:300;color:var(--muted);line-height:1.7;max-width:500px;}
+.slide-dots{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;gap:0.8rem;z-index:10;}
+.dot{width:28px;height:2px;background:rgba(201,164,90,0.25);cursor:pointer;transition:background .3s,width .3s;}
+.dot.active{background:var(--gold);width:44px;}
+.scroll-b{position:absolute;bottom:3.5rem;right:5rem;z-index:10;display:flex;flex-direction:column;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,246,242,0.25);}
+.b-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:bdrop 2.2s ease-in-out infinite;}
+@keyframes bdrop{0%{transform:scaleY(0) translateY(-100%);opacity:0}40%{opacity:1}100%{transform:scaleY(1) translateY(100%);opacity:0}}
+
+/* TICKER */
+.ticker-wrap{background:var(--gold);overflow:hidden;padding:0.85rem 0;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:tick 28s linear infinite;}
+.ticker-inner span{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);padding:0 2.5rem;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* PARTNERS */
+#partners{padding:8rem 0;background:var(--navy-mid);overflow:hidden;}
+.partners-hdr{text-align:center;padding:0 5rem;margin-bottom:5rem;}
+.sec-lbl{font-family:'DM Mono',monospace;font-size:0.82rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.section-h{font-size:clamp(2.5rem,4.5vw,4rem);font-weight:300;}
+.section-h em{font-style:italic;color:var(--gold);}
+.p-block{display:grid;grid-template-columns:320px 1fr;border-top:1px solid rgba(201,164,90,0.07);}
+.p-block.alt{grid-template-columns:1fr 320px;}
+.p-block.alt .p-photo-wrap{order:2;}
+.p-block.alt .p-content{order:1;}
+.p-photo-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:rgba(7,9,26,0.3);position:relative;}
+.p-photo{width:280px;height:350px;background:rgba(201,164,90,0.06);border:1px solid rgba(201,164,90,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;overflow:hidden;position:relative;}
+.p-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.92) contrast(1.05);mix-blend-mode:luminosity;}
+.p-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,9,26,0) 60%,rgba(7,9,26,0.45) 100%),linear-gradient(to top,rgba(7,9,26,0) 70%,rgba(7,9,26,0.3) 100%);pointer-events:none;}
+.p-initials{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:rgba(201,164,90,0.3);}
+.p-photo-lbl{font-family:'DM Mono',monospace;font-size:0.44rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,164,90,0.25);}
+.p-content{padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center;}
+.p-name{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:400;margin-bottom:0.4rem;}
+.p-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;}
+.p-div{width:50px;height:1px;background:rgba(201,164,90,0.4);margin-bottom:2rem;}
+.p-quote{font-size:1.25rem;font-style:italic;font-weight:300;line-height:1.65;color:#F4EDD8;margin-bottom:2rem;}
+.p-tabs{display:inline-flex;gap:2rem;border-bottom:1px solid rgba(201,164,90,0.2);margin-bottom:1.5rem;}
+.ptab{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);padding-bottom:0.6rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .3s;}
+.ptab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.p-tc{display:none;font-size:0.98rem;font-weight:300;line-height:1.8;color:var(--muted);}
+.p-tc.show{display:block;}
+
+/* PILLARS */
+#pillars{padding:9rem 5rem;background:var(--navy);}
+.pillars-hdr{text-align:center;margin-bottom:5rem;}
+.sec-lbl-lg{font-family:'DM Mono',monospace;font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.pc{padding:4rem 3.5rem;background:rgba(13,18,38,0.6);border:1px solid rgba(201,164,90,0.06);position:relative;overflow:hidden;transition:border-color .4s,transform .4s;}
+.pc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s;}
+.pc:hover::before{transform:scaleX(1);}
+.pc:hover{border-color:rgba(201,164,90,0.25);transform:translateY(-6px);}
+.pc-n{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(201,164,90,0.04);position:absolute;top:1rem;right:1.5rem;line-height:1;user-select:none;}
+.pc-icon{width:40px;height:40px;margin-bottom:2rem;}
+.pc-title{font-size:1.8rem;font-weight:300;margin-bottom:1.2rem;}
+.pc-text{font-size:0.98rem;font-weight:300;line-height:1.8;color:var(--muted);}
+
+/* SERVICES GRID */
+#services{padding:9rem 5rem;background:var(--navy-mid);}
+.svc-hdr{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:5rem;border-bottom:1px solid rgba(201,164,90,0.10);padding-bottom:3rem;gap:1rem;}
+.svc-h{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;}
+.svc-h em{font-style:italic;color:var(--gold);}
+.svc-note{font-family:'DM Mono',monospace;font-size:0.60rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.7;align-self:center;}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.sc{position:relative;overflow:hidden;background:var(--navy);aspect-ratio:3/4;cursor:pointer;}
+.sc img{width:100%;height:100%;object-fit:cover;transition:transform .7s,filter .7s;filter:grayscale(60%) brightness(0.55);}
+.sc:hover img{transform:scale(1.08);filter:grayscale(20%) brightness(0.7);}
+.sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,26,0.95) 0%,rgba(7,9,26,0.4) 60%,transparent 100%);}
+.sc-cnt{position:absolute;bottom:0;left:0;right:0;padding:2rem;}
+.sc-num{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;color:var(--gold);display:block;margin-bottom:0.6rem;}
+.sc-title{font-size:1.25rem;font-weight:400;line-height:1.2;margin-bottom:0.8rem;}
+.sc-desc{font-size:0.88rem;font-weight:300;line-height:1.6;color:var(--muted);margin-bottom:1.2rem;max-height:0;overflow:hidden;transition:max-height .5s,opacity .5s;opacity:0;}
+.sc:hover .sc-desc{max-height:80px;opacity:1;}
+.sc-rm{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;}
+.sc:hover .sc-rm{opacity:1;transform:translateY(0);}
+.sc-rm::after{content:'→';}
+
+/* CTA — LET'S TALK */
+#cta{background:linear-gradient(135deg,#0D1226,#07091A);padding:9rem 5rem;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(201,164,90,0.08);}
+#cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(201,164,90,0.06),transparent 70%);pointer-events:none;}
+.cta-lbl{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block;}
+.cta-h{font-size:clamp(3rem,5.5vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem;white-space:nowrap;}
+.cta-h em{font-style:italic;color:var(--gold);}
+.cta-sub{font-size:1.15rem;font-weight:300;color:var(--muted);margin-bottom:3rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.cta-btn{display:inline-flex;align-items:center;gap:0.8rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:1.2rem 3rem;text-decoration:none;transition:background .3s,transform .2s;}
+.cta-btn:hover{background:var(--gold-lt);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:#03040D;border-top:1px solid rgba(201,164,90,0.08);padding:5rem 5rem 2rem;}
+.f-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(201,164,90,0.07);}
+.f-brand-top{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem;}
+.f-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold);}
+.f-addr{display:flex;flex-direction:column;gap:0.8rem;margin-top:0.8rem;}
+.f-ai{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.f-ai svg{flex-shrink:0;margin-top:3px;}
+.f-col-title{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.f-col ul li a{font-size:0.92rem;font-weight:300;color:var(--muted);text-decoration:none;transition:color .3s;}
+.f-col ul li a:hover{color:var(--gold);}
+.f-bot{display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-family:'DM Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:rgba(248,246,242,0.18);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.12s;}.reveal-d2{transition-delay:.25s;}.reveal-d3{transition-delay:.38s;}
+.reveal-l{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-l.visible{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-r.visible{opacity:1;transform:translateX(0);}
+
+/* ============= MOBILE & TABLET RESPONSIVE ============= */
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--gold);}
+
+@media(max-width:900px){
+  .nav-links{display:none !important;}
+  .nav-hamburger{display:flex;}
+  #sb-trigger{display:none;}
+}
+@media(max-width:768px){
+  #addr-bar{display:none;}
+  #nav{padding:1rem 1.5rem;}
+  .nav-logo-main{font-size:1.2rem;}
+  .nav-logo-sub{font-size:0.4rem;}
+  footer{padding:3rem 1.5rem 2rem;}
+  .f-grid{grid-template-columns:1fr !important;gap:2rem;}
+  .f-bot{flex-direction:column;gap:0.5rem;text-align:center;}
+  #cursor,#cursor-ring{display:none !important;}
+  body{cursor:auto !important;}
+}
+@media(max-width:480px){
+  #nav{padding:0.8rem 1rem;}
+  .nav-logo-main{font-size:1rem;}
+  .nav-logo-sub{font-size:0.38rem;}
+  .nav-brand img{height:42px !important;}
+}
+
+@media(max-width:1024px){
+  #addr-bar{padding:0.45rem 2rem;}
+  #nav{padding:1.2rem 2rem;}
+  .svc-hdr{gap:1rem;}
+  .svc-note{text-align:center;align-self:center;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .pillars-grid{grid-template-columns:repeat(2,1fr);}
+  .pc{padding:3rem 2.5rem;}
+  .p-content{padding:4rem 3rem;}
+  .f-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  #services{padding:6rem 2rem;}
+  #pillars{padding:6rem 2rem;}
+  #cta{padding:6rem 2rem;}
+  #partners{padding:5rem 0;}
+}
+@media(max-width:768px){
+  #hero{height:80vh;}
+  .slide-content{left:5%;bottom:8vh;max-width:90%;}
+  .slide-title{font-size:clamp(2.2rem,7vw,3.5rem);}
+  .slide-sub{font-size:1rem;}
+  .p-block,.p-block.alt{grid-template-columns:1fr;}
+  .p-block.alt .p-photo-wrap{order:0;}
+  .p-block.alt .p-content{order:0;}
+  .p-photo-wrap{padding:2rem 1.5rem;}
+  .p-content{padding:3rem 1.5rem;}
+  .partners-hdr{padding:0 1.5rem;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .sc{aspect-ratio:3/4;}
+  .pillars-grid{grid-template-columns:1fr !important;}
+  .cta-h{white-space:normal;font-size:clamp(2rem,5vw,3.5rem);}
+  .scroll-b{display:none;}
+  #services{padding:5rem 1.5rem;}
+  #pillars{padding:5rem 1.5rem;}
+  #cta{padding:5rem 1.5rem;}
+  .svc-h{font-size:clamp(2rem,5vw,3rem);}
+}
+@media(max-width:480px){
+  .slide-title{font-size:clamp(1.8rem,6vw,2.5rem);}
+  .p-name{font-size:1.5rem;}
+  .p-quote{font-size:1.05rem;}
+  .svc-grid{grid-template-columns:1fr;}
+  .section-h{font-size:clamp(1.8rem,5vw,2.5rem);}
+  .ticker-wrap{padding:0.6rem 0;}
+  .ticker-inner span{font-size:0.52rem;padding:0 1.5rem;}
+  .p-photo{width:220px;height:280px;}
+}
+
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<!-- SIDEBAR -->
+<div id="sb-trigger" onclick="toggleSB()"><span></span><span></span><span></span></div>
+<div id="sb-ov" onclick="toggleSB()"></div>
+<div id="sidebar"><div class="sbi">
+<button class="sbc" onclick="toggleSB()">×</button>
+<div class="sb-logo"><img src="CA_LOGO-removebg-preview.png" alt="CA India" style="height:62px;width:auto;display:block;filter:brightness(1.4);"><span class="sb-firm">A. N. Mehta & Co.</span></div>
+<p class="sb-desc">A. N. Mehta & Co. is led by two dedicated Chartered Accountants specialising in GST advisory, direct and indirect taxation, business compliance, audit, and financial assurance — serving businesses of every scale with the highest professional standards.</p>
+<ul class="sb-nav">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="solutions.html">Solutions</a></li>
+<li><a href="services.html">Service Model</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+<p class="sb-ct-title">Get In Touch</p>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Siddha Esplanade, 6 JN Road, 10th Fl, Suite 1008, Kolkata – 700013</div>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+91 8910827253</div>
+<div class="sb-ci"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info.anmehtaco@gmail.com" style="color:inherit;text-decoration:none;">info.anmehtaco@gmail.com</a></div>
+</div></div>
+
+<!-- ADDRESS BAR -->
+<div id="addr-bar">
+<div class="addr-item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Siddha Esplanade, 6 Jawaharlal Nehru Road, 10th Floor, Suite 1008, Kolkata – 700013, India</div>
+<div class="addr-right">
+<div class="addr-item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+91 8910827253</div>
+<div class="addr-item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info.anmehtaco@gmail.com" style="color:inherit;text-decoration:none;">info.anmehtaco@gmail.com</a></div>
+</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+<a href="index.html" class="nav-brand">
+<img src="CA_LOGO-removebg-preview.png" alt="CA India" style="height:62px;width:auto;display:block;filter:brightness(1.4);">
+<div><span class="nav-logo-main">A. N. Mehta & Co.</span><span class="nav-logo-sub">Chartered Accountants</span></div>
+</a>
+<ul class="nav-links">
+<li><a href="index.html" class="active">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Service Model</a></li>
+<li><a href="solutions.html">Solutions</a></li>
+<li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+</ul>
+<button class="nav-hamburger" onclick="toggleSB()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+<div class="slide active">
+<img class="slide-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90" alt="City skyline">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<h1 class="slide-title">Excellence in<br><em>Audit &</em><br><em>Assurance.</em></h1>
+<p class="slide-sub">Where financial integrity meets the highest standard of professional conduct.</p>
+</div>
+</div>
+<div class="slide">
+<img class="slide-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=90" alt="Team working">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<h1 class="slide-title"><em>Precision</em> that<br>Protects.<br>Counsel that Grows.</h1>
+<p class="slide-sub">A team of dedicated professionals invested in your financial success.</p>
+</div>
+</div>
+<div class="slide">
+<img class="slide-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=90" alt="Finance documents">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<h1 class="slide-title">Your Numbers.<br>Our<br><em>Conviction.</em></h1>
+<p class="slide-sub">From inception to expansion — we are the firm that never leaves your side.</p>
+</div>
+</div>
+<div class="slide-dots">
+<div class="dot active" onclick="goSlide(0)"></div>
+<div class="dot" onclick="goSlide(1)"></div>
+<div class="dot" onclick="goSlide(2)"></div>
+</div>
+<div class="scroll-b"><div class="b-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner">
+<span>Audit & Assurance</span><span>·</span><span>Direct Taxation</span><span>·</span><span>Indirect Taxation & GST</span><span>·</span><span>Valuation & Advisory</span><span>·</span><span>Business Advisory</span><span>·</span><span>Due Diligence</span><span>·</span><span>Management Assurance</span><span>·</span><span>Business Startup</span><span>·</span><span>Audit & Assurance</span><span>·</span><span>Direct Taxation</span><span>·</span><span>Indirect Taxation & GST</span><span>·</span><span>Valuation & Advisory</span><span>·</span><span>Business Advisory</span><span>·</span><span>Due Diligence</span><span>·</span><span>Management Assurance</span><span>·</span><span>Business Startup</span><span>·</span>
+</div></div>
+
+<!-- PARTNERS -->
+<section id="partners">
+<div class="partners-hdr">
+<span class="sec-lbl reveal">The People Behind the Practice</span>
+<h2 class="section-h reveal reveal-d1">Our <em>Partners.</em></h2>
+</div>
+
+<!-- PARTNER 1 -->
+<div class="p-block">
+<div class="p-photo-wrap reveal-l">
+<div class="p-photo">
+<img src="AMISH_MEHTA_PIC.jpeg" alt="FCA Amish Natvarlal Mehta">
+</div>
+</div>
+<div class="p-content">
+<h2 class="p-name reveal">FCA Amish Natvarlal Mehta</h2>
+<p class="p-title reveal reveal-d1">Founding Partner · BCom (H) · FCA</p>
+<div class="p-div reveal reveal-d2"></div>
+<p class="p-quote reveal reveal-d2">"My vision is to build a firm where every client — regardless of size — has access to financial counsel of the highest calibre. A firm where trust is not a promise but a daily practice."</p>
+<div class="reveal reveal-d3">
+<div class="p-tabs">
+<span class="ptab on" onclick="swTab(this,'m1')">Mission</span>
+<span class="ptab" onclick="swTab(this,'v1')">Vision</span>
+</div>
+<div class="p-tc show" id="m1">To deliver audit, taxation, and advisory services that go beyond compliance — services that genuinely empower businesses to grow with confidence, clarity, and financial integrity as their foundation. Every engagement we undertake is a commitment to making our client's financial world simpler, more transparent, and more resilient.</div>
+<div class="p-tc" id="v1">To establish A. N. Mehta & Co. as the foremost trusted financial advisory firm in Eastern India — one where the quality of counsel, the depth of expertise, and the strength of the client relationship are recognised as the gold standard. I envision a firm where the next generation of business owners know exactly who to call, because we have never given them reason to look elsewhere.</div>
+</div>
+</div>
+</div>
+
+<!-- PARTNER 2 -->
+<div class="p-block alt">
+<div class="p-content">
+<h2 class="p-name reveal">FCA Abhishek Jhajharia</h2>
+<p class="p-title reveal reveal-d1">Partner · BCom (H) · FCA · DISA</p>
+<div class="p-div reveal reveal-d2"></div>
+<p class="p-quote reveal reveal-d2">"The most powerful thing a CA can do is not file returns — it is to make every client understand why each financial decision either builds or erodes the value of what they are creating."</p>
+<div class="reveal reveal-d3">
+<div class="p-tabs">
+<span class="ptab on" onclick="swTab(this,'m2')">Mission</span>
+<span class="ptab" onclick="swTab(this,'v2')">Vision</span>
+</div>
+<div class="p-tc show" id="m2">To bridge the gap between technical financial expertise and practical business reality — ensuring our clients never face a tax notice, a compliance gap, or a business decision without clear, commercially grounded advice. My mission is to make every client feel their CA firm is genuinely invested in their success, not merely their paperwork.</div>
+<div class="p-tc" id="v2">To build a practice where technology, deep GST expertise, and proactive advisory come together to serve the modern Indian entrepreneur. I see a future where our firm is the first call a founder makes — before they incorporate, before they raise capital, before they enter a new market — because they know the value of having the right financial partner from day one.</div>
+</div>
+</div>
+<div class="p-photo-wrap reveal-r">
+<div class="p-photo">
+<img src="ABHISHEK_JHAJHARIA_PIC.jpeg" alt="FCA Abhishek Jhajharia">
+</div>
+</div>
+</div>
+</section>
+
+<!-- THREE PILLARS -->
+<section id="pillars">
+<div class="pillars-hdr">
+<span class="sec-lbl-lg reveal">Our Commitments</span>
+<h2 class="section-h reveal reveal-d1">Built on <em>three pillars.</em></h2>
+</div>
+<div class="pillars-grid">
+<div class="pc reveal">
+<div class="pc-n">01</div>
+<svg class="pc-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#C9A45A" stroke-width="1"/><path d="M12 20l6 6 10-12" stroke="#C9A45A" stroke-width="1.5"/></svg>
+<h3 class="pc-title">Precision</h3>
+<p class="pc-text">Every figure we certify, every return we file, every opinion we render — carries the weight of exactitude. There is no approximation in our work. We get it right, the first time, every time.</p>
+</div>
+<div class="pc reveal reveal-d1">
+<div class="pc-n">02</div>
+<svg class="pc-icon" viewBox="0 0 40 40" fill="none"><path d="M20 4L36 12L36 28Q20 38 4 28L4 12Z" stroke="#C9A45A" stroke-width="1"/><path d="M14 20l4 4 8-8" stroke="#C9A45A" stroke-width="1.5"/></svg>
+<h3 class="pc-title">Integrity</h3>
+<p class="pc-text">Our reputation is our balance sheet. Independence, objectivity, and ethical conduct are absolute non-negotiables — maintained in every engagement, with every client, without exception.</p>
+</div>
+<div class="pc reveal reveal-d2">
+<div class="pc-n">03</div>
+<svg class="pc-icon" viewBox="0 0 40 40" fill="none"><path d="M20 8C10 8 4 14 4 20C4 30 20 36 20 36C20 36 36 30 36 20C36 14 30 8 20 8Z" stroke="#C9A45A" stroke-width="1"/><circle cx="20" cy="20" r="5" stroke="#C9A45A" stroke-width="1"/></svg>
+<h3 class="pc-title">Partnership</h3>
+<p class="pc-text">We are not service providers. We are partners invested in your success — present at every financial crossroads, committed far beyond the boundaries of any engagement letter.</p>
+</div>
+</div>
+</section>
+
+<!-- EIGHT SERVICES -->
+<section id="services">
+<div class="svc-hdr">
+<span class="sec-lbl reveal" style="font-size:clamp(1.1rem,1.8vw,1.4rem);">What We Do</span>
+<h2 class="svc-h reveal reveal-d1">Eight Services. <em>One standard.</em></h2>
+<p class="svc-note reveal reveal-d2">From the moment a business is born to the full complexity of its maturity — we are present at every financial inflection point.</p>
+</div>
+<div class="svc-grid">
+<div class="sc reveal"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Audit"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">01</span><h3 class="sc-title">Audit & Assurance</h3><p class="sc-desc">Statutory, internal, and tax audits with forensic rigour.</p><a href="services.html#panel-0" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d1"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80" alt="Tax"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">02</span><h3 class="sc-title">Direct Taxation</h3><p class="sc-desc">Income tax strategy, compliance, and appellate representation.</p><a href="services.html#panel-1" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d2"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="GST"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">03</span><h3 class="sc-title">Indirect Tax & GST</h3><p class="sc-desc">Complete GST solutions from registration to litigation.</p><a href="services.html#panel-2" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d3"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="Valuation"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">04</span><h3 class="sc-title">Valuation & Advisory</h3><p class="sc-desc">Defensible valuations for transactions and disputes.</p><a href="services.html#panel-3" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80" alt="Advisory"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">05</span><h3 class="sc-title">Business Advisory</h3><p class="sc-desc">Strategic financial counsel for growth and restructuring.</p><a href="services.html#panel-4" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d1"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80" alt="DD"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">06</span><h3 class="sc-title">Due Diligence</h3><p class="sc-desc">Financial and tax reviews before you sign or invest.</p><a href="services.html#panel-5" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d2"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="IA"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">07</span><h3 class="sc-title">Management Assurance</h3><p class="sc-desc">Internal audit and controls protecting from within.</p><a href="services.html#panel-6" class="sc-rm">Read More</a></div></div>
+<div class="sc reveal reveal-d3"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80" alt="Startup"><div class="sc-ov"></div><div class="sc-cnt"><span class="sc-num">08</span><h3 class="sc-title">Business Startup</h3><p class="sc-desc">Complete launch support — incorporation to first audit.</p><a href="services.html#panel-7" class="sc-rm">Read More</a></div></div>
+</div>
+</section>
+
+<!-- LET'S TALK -->
+<section id="cta">
+<span class="cta-lbl reveal">Ready to Begin?</span>
+<h2 class="cta-h reveal reveal-d1"><em>Let's</em> Talk. We're Listening.</h2>
+<p class="cta-sub reveal reveal-d2">A complex financial world deserves an uncommon firm. No challenge too complex. No client too small. One conversation could change everything.</p>
+<a href="contact.html" class="cta-btn reveal reveal-d3">Begin the Conversation →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="f-grid">
+<div>
+<div class="f-brand-top"><img src="CA_LOGO-removebg-preview.png" alt="CA India" style="height:62px;width:auto;display:block;filter:brightness(1.4);"><span class="f-brand-name">A. N. Mehta & Co.</span></div>
+<div class="f-addr">
+<div class="f-ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Siddha Esplanade, 6 Jawaharlal Nehru Road,<br>10th Floor, Suite 1008, Kolkata – 700013, India</div>
+<div class="f-ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+91 8910827253</div>
+<div class="f-ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A45A" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info.anmehtaco@gmail.com" style="color:inherit;text-decoration:none;">info.anmehtaco@gmail.com</a></div>
+</div>
+</div>
+<div class="f-col"><p class="f-col-title">Useful Links</p><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Service Model</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+<div class="f-col"><p class="f-col-title">Our Services</p><ul><li><a href="services.html#panel-0">Audit & Assurance</a></li><li><a href="services.html#panel-1">Direct Taxation</a></li><li><a href="services.html#panel-2">Indirect Tax & GST</a></li><li><a href="services.html#panel-3">Valuation</a></li><li><a href="services.html#panel-4">Business Advisory</a></li><li><a href="services.html#panel-5">Due Diligence</a></li></ul></div>
+<div class="f-col"><p class="f-col-title">More Services</p><ul><li><a href="services.html#panel-6">Management Assurance</a></li><li><a href="services.html#panel-7">Business Startup</a></li></ul></div>
+</div>
+<div class="f-bot"><span class="f-copy">© 2025 A. N. Mehta & Co. Chartered Accountants. All rights reserved.</span><span class="f-copy">Kolkata, India</span></div>
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(201,164,90,0.06);">
+<p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(248,246,242,0.18);line-height:1.8;">A. N. Mehta & Co. is a firm of Chartered Accountants incorporated in India. The content of these web pages is intended for general informational purposes only and should not be construed as professional advice. No reader should act or refrain from acting on the basis of any information contained herein without first seeking specific professional counsel. A. N. Mehta & Co., its partners, employees, and agents accept no liability for any loss or damage arising from any action taken or not taken in reliance upon the information provided on these pages, or for any decision based thereon. For advice tailored to your particular circumstances, please contact us directly.</p>
+</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cur.style.left=mx+'px';cur.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='52px';ring.style.height='52px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='38px';ring.style.height='38px';});
+});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+let cs=0;
+const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot');
+function goSlide(n){slides[cs].classList.remove('active');dots[cs].classList.remove('active');cs=n;slides[cs].classList.add('active');dots[cs].classList.add('active');}
+setInterval(()=>goSlide((cs+1)%slides.length),5500);
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+function toggleSB(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sb-ov').classList.toggle('show');}
+function swTab(el,id){
+  const par=el.closest('.reveal');
+  par.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  par.querySelectorAll('.p-tc').forEach(c=>c.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
+</script>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/918910827253" target="_blank" rel="noopener noreferrer" id="wa-btn" aria-label="Chat on WhatsApp" style="position:fixed;bottom:2rem;right:2rem;z-index:900;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);transition:transform .3s,box-shadow .3s;text-decoration:none;">
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+</body>
+</html>
