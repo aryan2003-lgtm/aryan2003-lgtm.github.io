@@ -32,19 +32,19 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
 .hdr{background:linear-gradient(160deg,#0F1825 0%,#080B14 100%);padding:36px 24px 26px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
 .hdr::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:220px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .hdr-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:320px;height:220px;background:radial-gradient(ellipse,rgba(201,168,76,.09) 0%,transparent 68%);pointer-events:none}
-.hdr-logo{width:56px;height:56px;object-fit:contain;margin-bottom:13px;display:block;margin-left:auto;margin-right:auto}
-.hdr-name{font-size:22px;font-weight:700;letter-spacing:.4px;color:var(--t1);margin-bottom:5px}
+.hdr-logo{width:64px;height:64px;object-fit:contain;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto}
+.hdr-name{font-size:30px;font-weight:700;letter-spacing:.4px;color:var(--t1);margin-bottom:6px}
 .hdr-name em{color:var(--gold);font-style:normal}
-.hdr-tag{font-size:10px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold);opacity:.78;margin-bottom:16px}
+.hdr-tag{font-size:11px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold);opacity:.78;margin-bottom:16px}
 .gold-line{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
 
 /* PARTNER HERO */
 .hero{padding:28px 24px 22px;text-align:center;background:var(--bg-card);border-bottom:1px solid var(--bdr-s);position:relative}
 .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
-.hero-photo{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:top center;border:2.5px solid var(--gold);margin:0 auto 14px;display:block}
-.hero-name{font-size:17px;font-weight:700;margin-bottom:6px}
-.hero-creds{font-size:11px;color:var(--gold);letter-spacing:.5px;margin-bottom:4px}
-.hero-role{font-size:11px;color:var(--t3);font-style:italic}
+.hero-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid var(--gold);margin:0 auto 16px;display:block}
+.hero-name{font-size:21px;font-weight:700;margin-bottom:7px}
+.hero-creds{font-size:12px;color:var(--gold);letter-spacing:.5px;margin-bottom:5px}
+.hero-role{font-size:12px;color:var(--t3);font-style:italic}
 
 /* CONTACT */
 .contact{padding:6px 18px;background:var(--bg);border-bottom:1px solid var(--bdr-s)}
@@ -107,11 +107,11 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
    ✅ Enable "Background graphics"
 ═══════════════════════════════════════════ */
 @media print{
-  @page{size:A4 portrait;margin:0}
+  @page{size:430px 1000px;margin:0}
   *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
-  html{zoom:.82;background:#030508!important}
-  body{background:#030508!important;padding:16mm 18mm!important;min-height:unset!important;display:block!important}
-  .card{max-width:100%!important;width:100%!important;border-radius:20px!important;overflow:hidden!important;box-shadow:0 0 0 1px rgba(201,168,76,.22),0 8px 32px rgba(0,0,0,.7)!important;page-break-inside:avoid!important;break-inside:avoid!important}
+  html{background:var(--bg)!important}
+  body{background:var(--bg)!important;padding:0!important;min-height:unset!important;display:block!important}
+  .card{max-width:100%!important;width:100%!important;border-radius:0!important;overflow:hidden!important;box-shadow:none!important;page-break-inside:avoid!important;break-inside:avoid!important}
   .overlay{display:none!important}
   a[href]::after{content:none!important}
 }
@@ -149,7 +149,7 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
   </div>
   <div class="ci">
     <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-    <div><div class="ci-lbl">Office</div><div class="ci-val">Siddha Esplanade, 6 JN Road,<br>10th Fl · Suite 1008 · Kolkata – 700013</div></div>
+    <div><div class="ci-lbl">Office</div><div class="ci-val">Unit-1008, 10th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, next to metro Inox, Dharmatala, Kolkata, West Bengal 700013</div></div>
   </div>
 </section>
 
