@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>FCA Abhishek Jhajharia | A. N. Mehta &amp; Co.</title>
+<style>
+:root {
+  --bg:      #080B14;
+  --bg-card: #0E1421;
+  --bg-surf: #141C2E;
+  --bg-el:   #1A2440;
+  --gold:    #C9A84C;
+  --gold-lt: #E8C876;
+  --gold-gl: rgba(201,168,76,.12);
+  --t1:      #F2EFE8;
+  --t2:      #9BA8C0;
+  --t3:      #4E5A72;
+  --bdr:     rgba(201,168,76,.22);
+  --bdr-s:   rgba(255,255,255,.06);
+  --r:14px; --rx:28px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;display:flex;justify-content:center}
+.card{width:100%;max-width:430px}
+@media(min-width:480px){
+  body{background:#030508;align-items:center;padding:28px 16px;min-height:100vh}
+  .card{border-radius:26px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 0 1px rgba(201,168,76,.12)}
+}
+
+/* HEADER */
+.hdr{background:linear-gradient(160deg,#0F1825 0%,#080B14 100%);padding:36px 24px 26px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+.hdr::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:220px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hdr-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:320px;height:220px;background:radial-gradient(ellipse,rgba(201,168,76,.09) 0%,transparent 68%);pointer-events:none}
+.hdr-logo{width:56px;height:56px;object-fit:contain;margin-bottom:13px;display:block;margin-left:auto;margin-right:auto}
+.hdr-name{font-size:22px;font-weight:700;letter-spacing:.4px;color:var(--t1);margin-bottom:5px}
+.hdr-name em{color:var(--gold);font-style:normal}
+.hdr-tag{font-size:10px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold);opacity:.78;margin-bottom:16px}
+.gold-line{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
+
+/* PARTNER HERO */
+.hero{padding:28px 24px 22px;text-align:center;background:var(--bg-card);border-bottom:1px solid var(--bdr-s);position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
+.hero-photo{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:top center;border:2.5px solid var(--gold);margin:0 auto 14px;display:block}
+.hero-name{font-size:17px;font-weight:700;margin-bottom:6px}
+.hero-creds{font-size:11px;color:var(--gold);letter-spacing:.5px;margin-bottom:4px}
+.hero-role{font-size:11px;color:var(--t3);font-style:italic}
+
+/* CONTACT */
+.contact{padding:6px 18px;background:var(--bg);border-bottom:1px solid var(--bdr-s)}
+.ci{display:flex;align-items:flex-start;gap:13px;padding:10px 0}
+.ci+.ci{border-top:1px solid var(--bdr-s)}
+.ci-ico{width:34px;height:34px;background:var(--gold-gl);border:1px solid var(--bdr);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-ico svg{width:16px;height:16px;fill:var(--gold)}
+.ci-lbl{font-size:9.5px;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.ci-val{font-size:13px;color:var(--t1);line-height:1.45}
+
+/* ACTIONS */
+.actions{padding:20px 18px;background:var(--bg-card)}
+.sec-lbl{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:var(--t3);text-align:center;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.ab{background:var(--bg-surf);border:1px solid var(--bdr-s);border-radius:var(--r);padding:14px 7px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--t1);cursor:pointer;transition:border-color .18s,background .18s,transform .12s;-webkit-appearance:none;font-family:inherit}
+.ab:active{transform:scale(.95);background:var(--bg-el)}
+@media(hover:hover){.ab:hover{border-color:var(--gold);background:var(--bg-el)}}
+.ab-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.ab-ico svg{width:20px;height:20px}
+.ab-lbl{font-size:10px;font-weight:500;color:var(--t2)}
+.c  .ab-ico{background:rgba(52,199,89,.11)}  .c  .ab-ico svg{fill:#34C759}
+.wa .ab-ico{background:rgba(37,211,102,.11)} .wa .ab-ico svg{fill:#25D366}
+.em .ab-ico{background:rgba(201,168,76,.11)} .em .ab-ico svg{fill:var(--gold)}
+.sv .ab-ico{background:rgba(10,132,255,.11)} .sv .ab-ico svg{fill:#0A84FF}
+.mp .ab-ico{background:rgba(255,59,48,.11)}  .mp .ab-ico svg{fill:#FF3B30}
+.wb .ab-ico{background:rgba(175,82,222,.11)} .wb .ab-ico svg{fill:#AF52DE}
+
+/* REVIEW */
+.review{padding:14px 18px;background:var(--bg);border-top:1px solid var(--bdr-s)}
+.review-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:linear-gradient(135deg,rgba(201,168,76,.10),rgba(201,168,76,.05));border:1px solid var(--bdr);border-radius:var(--r);color:var(--gold-lt);font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:background .18s;font-family:inherit;-webkit-appearance:none}
+.review-btn svg{width:18px;height:18px;fill:#FFCC00;flex-shrink:0}
+@media(hover:hover){.review-btn:hover{background:rgba(201,168,76,.16)}}
+
+/* WEB CHIP */
+.web-chip{padding:13px 18px;background:var(--bg-card);border-top:1px solid var(--bdr-s);display:flex;align-items:center;justify-content:center;gap:8px}
+.web-chip svg{width:14px;height:14px;fill:var(--t3)}
+.web-chip a{font-size:13px;color:var(--gold);text-decoration:none;letter-spacing:.3px}
+.web-chip a:hover{text-decoration:underline}
+
+/* FOOTER */
+.footer{padding:14px 18px 32px;background:var(--bg);border-top:1px solid var(--bdr-s);text-align:center}
+.footer-svc{font-size:10px;color:var(--t3);line-height:2;margin-bottom:10px}
+.footer-copy{font-size:10px;color:var(--t3);opacity:.4}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.overlay.open{display:flex}
+.modal{background:var(--bg-surf);border:1px solid var(--bdr);border-bottom:none;border-radius:var(--rx) var(--rx) 0 0;padding:22px 18px 40px;width:100%;max-width:430px;animation:up .25s ease}
+@keyframes up{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
+.m-handle{width:36px;height:4px;background:var(--t3);border-radius:2px;margin:0 auto 18px;opacity:.4}
+.m-title{font-size:16px;font-weight:600;text-align:center;margin-bottom:4px}
+.m-sub{font-size:12px;color:var(--t2);text-align:center;margin-bottom:20px}
+.m-save{display:flex;align-items:center;gap:12px;width:100%;padding:16px;margin-bottom:10px;background:var(--bg-el);border:1px solid var(--bdr);border-radius:var(--r);color:var(--t1);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-appearance:none;text-align:left}
+.m-save:hover{border-color:var(--gold);background:var(--gold-gl)}
+.m-save img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);flex-shrink:0}
+.m-cancel{width:100%;padding:13px;background:transparent;border:1px solid var(--bdr-s);border-radius:var(--r);color:var(--t2);font-size:14px;cursor:pointer;font-family:inherit}
+
+/* ═══════════════════════════════════════════
+   PRINT / PDF  (Chrome → Save as PDF)
+   ✅ Enable "Background graphics"
+═══════════════════════════════════════════ */
+@media print{
+  @page{size:A4 portrait;margin:0}
+  *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  html{zoom:.82;background:#030508!important}
+  body{background:#030508!important;padding:16mm 18mm!important;min-height:unset!important;display:block!important}
+  .card{max-width:100%!important;width:100%!important;border-radius:20px!important;overflow:hidden!important;box-shadow:0 0 0 1px rgba(201,168,76,.22),0 8px 32px rgba(0,0,0,.7)!important;page-break-inside:avoid!important;break-inside:avoid!important}
+  .overlay{display:none!important}
+  a[href]::after{content:none!important}
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-glow"></div>
+  <img src="https://anmehtaco.com/CA_LOGO-removebg-preview.png" alt="CA India" class="hdr-logo">
+  <div class="hdr-name">A. N. <em>Mehta</em> &amp; Co.</div>
+  <div class="hdr-tag">Chartered Accountants</div>
+  <div class="gold-line"></div>
+</header>
+
+<!-- PARTNER HERO -->
+<section class="hero">
+  <img src="https://anmehtaco.com/ABHISHEK_JHAJHARIA_PIC.jpeg" alt="FCA Abhishek Jhajharia" class="hero-photo">
+  <div class="hero-name">FCA Abhishek Jhajharia</div>
+  <div class="hero-creds">BCom (H) &nbsp;·&nbsp; FCA &nbsp;·&nbsp; DISA</div>
+  <div class="hero-role">Partner</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="ci">
+    <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">+91 98317 75854</div></div>
+  </div>
+  <div class="ci">
+    <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+    <div><div class="ci-lbl">Email</div><div class="ci-val">info.anmehtaco@gmail.com</div></div>
+  </div>
+  <div class="ci">
+    <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+    <div><div class="ci-lbl">Office</div><div class="ci-val">Siddha Esplanade, 6 JN Road,<br>10th Fl · Suite 1008 · Kolkata – 700013</div></div>
+  </div>
+</section>
+
+<!-- ACTIONS -->
+<section class="actions">
+  <div class="sec-lbl">Connect With Me</div>
+  <div class="grid">
+    <a href="tel:+919831775854" class="ab c">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+      <div class="ab-lbl">Call</div>
+    </a>
+    <a href="https://wa.me/919831775854?text=Hello%2C%20I%20got%20your%20contact%20from%20your%20digital%20card." class="ab wa" target="_blank" rel="noopener">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+      <div class="ab-lbl">WhatsApp</div>
+    </a>
+    <a href="mailto:info.anmehtaco@gmail.com" class="ab em">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+      <div class="ab-lbl">Email</div>
+    </a>
+    <button class="ab sv" onclick="openModal()">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg></div>
+      <div class="ab-lbl">Save Contact</div>
+    </button>
+    <a href="https://www.google.com/maps/place/A.N.+MEHTA+%26+CO./@22.563934,88.3518931,17z/data=!4m6!3m5!1s0x3a0277001e820b5b:0x91c5a99fc7f307e0!8m2!3d22.563934!4d88.3518931!16s%2Fg%2F11mctfqr61" class="ab mp" target="_blank" rel="noopener">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+      <div class="ab-lbl">Directions</div>
+    </a>
+    <a href="https://anmehtaco.com/" class="ab wb" target="_blank" rel="noopener">
+      <div class="ab-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+      <div class="ab-lbl">Website</div>
+    </a>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section class="review">
+  <a href="https://g.page/r/CeAH88efqcWREBM/review" class="review-btn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    <span>Leave Us a Google Review</span>
+  </a>
+</section>
+
+<!-- WEBSITE CHIP -->
+<div class="web-chip">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+  <a href="https://anmehtaco.com/" target="_blank" rel="noopener">anmehtaco.com</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-svc">Audit &amp; Assurance &nbsp;·&nbsp; Direct Taxation &nbsp;·&nbsp; Indirect Tax &amp; GST<br>Valuation &nbsp;·
