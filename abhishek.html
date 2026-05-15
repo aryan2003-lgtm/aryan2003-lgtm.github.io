@@ -97,7 +97,7 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
 .m-handle{width:36px;height:4px;background:var(--t3);border-radius:2px;margin:0 auto 18px;opacity:.4}
 .m-title{font-size:16px;font-weight:600;text-align:center;margin-bottom:4px}
 .m-sub{font-size:12px;color:var(--t2);text-align:center;margin-bottom:20px}
-.m-save{display:flex;align-items:center;gap:12px;width:100%;padding:16px;margin-bottom:10px;background:var(--bg-el);border:1px solid var(--bdr);border-radius:var(--r);color:var(--t1);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-appearance:none;text-align:left}
+.m-save{display:flex;align-items:center;gap:12px;width:100%;padding:16px;margin-bottom:10px;background:var(--bg-el);border:1px solid var(--bdr);border-radius:var(--r);color:var(--t1);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-appearance:none;text-align:left;text-decoration:none;box-sizing:border-box}
 .m-save:hover{border-color:var(--gold);background:var(--gold-gl)}
 .m-save img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);flex-shrink:0}
 .m-cancel{width:100%;padding:13px;background:transparent;border:1px solid var(--bdr-s);border-radius:var(--r);color:var(--t2);font-size:14px;cursor:pointer;font-family:inherit}
@@ -200,4 +200,29 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-svc">Audit &amp; Assurance &nbsp;·&nbsp; Direct Taxation &nbsp;·&nbsp; Indirect Tax &amp; GST<br>Valuation &nbsp;·
+  <div class="footer-svc">Audit &amp; Assurance &nbsp;·&nbsp; Direct Taxation &nbsp;·&nbsp; Indirect Tax &amp; GST<br>Valuation &nbsp;·&nbsp; Business Advisory &nbsp;·&nbsp; Due Diligence</div>
+  <div class="footer-copy">© 2025 A. N. Mehta &amp; Co. · Chartered Accountants · Kolkata, India</div>
+</footer>
+
+</div><!-- .card -->
+
+<!-- SAVE MODAL -->
+<div class="overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="m-handle"></div>
+    <div class="m-title">Save Contact</div>
+    <div class="m-sub">Tap below to add to your phone contacts</div>
+    <a class="m-save" href="https://anmehtaco.com/abhishek_contact.vcf" onclick="setTimeout(closeModal,400)">
+      <img src="https://anmehtaco.com/ABHISHEK_JHAJHARIA_PIC.jpeg" alt="">
+      <div><div>FCA Abhishek Jhajharia</div><div style="font-size:11px;color:var(--t3);margin-top:3px">Partner · A. N. Mehta &amp; Co.</div></div>
+    </a>
+    <button class="m-cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+</script>
+</body>
+</html>

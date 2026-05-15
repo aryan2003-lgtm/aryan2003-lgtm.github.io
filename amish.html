@@ -97,7 +97,7 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
 .m-handle{width:36px;height:4px;background:var(--t3);border-radius:2px;margin:0 auto 18px;opacity:.4}
 .m-title{font-size:16px;font-weight:600;text-align:center;margin-bottom:4px}
 .m-sub{font-size:12px;color:var(--t2);text-align:center;margin-bottom:20px}
-.m-save{display:flex;align-items:center;gap:12px;width:100%;padding:16px;margin-bottom:10px;background:var(--bg-el);border:1px solid var(--bdr);border-radius:var(--r);color:var(--t1);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-appearance:none;text-align:left}
+.m-save{display:flex;align-items:center;gap:12px;width:100%;padding:16px;margin-bottom:10px;background:var(--bg-el);border:1px solid var(--bdr);border-radius:var(--r);color:var(--t1);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-appearance:none;text-align:left;text-decoration:none;box-sizing:border-box}
 .m-save:hover{border-color:var(--gold);background:var(--gold-gl)}
 .m-save img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);flex-shrink:0}
 .m-cancel{width:100%;padding:13px;background:transparent;border:1px solid var(--bdr-s);border-radius:var(--r);color:var(--t2);font-size:14px;cursor:pointer;font-family:inherit}
@@ -212,10 +212,10 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
     <div class="m-handle"></div>
     <div class="m-title">Save Contact</div>
     <div class="m-sub">Tap below to add to your phone contacts</div>
-    <button class="m-save" onclick="dl()">
+    <a class="m-save" href="https://anmehtaco.com/amish_contact.vcf" onclick="setTimeout(closeModal,400)">
       <img src="https://anmehtaco.com/AMISH_MEHTA_PIC.jpeg" alt="">
       <div><div>FCA Amish Natvarlal Mehta</div><div style="font-size:11px;color:var(--t3);margin-top:3px">Founding Partner · A. N. Mehta &amp; Co.</div></div>
-    </button>
+    </a>
     <button class="m-cancel" onclick="closeModal()">Cancel</button>
   </div>
 </div>
@@ -223,11 +223,6 @@ body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSyst
 <script>
 function openModal(){document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
-function dl(){
-  const v=['BEGIN:VCARD','VERSION:3.0','FN:FCA Amish Natvarlal Mehta','N:Mehta;Amish;Natvarlal;;FCA','ORG:A. N. Mehta & Co.;Chartered Accountants','TITLE:Founding Partner','TEL;TYPE=WORK,VOICE:+919831021974','TEL;TYPE=CELL:+919831021974','EMAIL;TYPE=WORK,INTERNET:info.anmehtaco@gmail.com','ADR;TYPE=WORK:;;Siddha Esplanade\\, 6 Jawaharlal Nehru Road\\, 10th Floor\\, Suite 1008;Kolkata;;700013;India','URL:https://anmehtaco.com','NOTE:FCA · BCom (H) · Founding Partner · A. N. Mehta & Co.','END:VCARD'].join('\r\n');
-  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([v],{type:'text/vcard;charset=utf-8'})),download:'Amish_Mehta_ANMehtaCo.vcf'});
-  document.body.appendChild(a);a.click();document.body.removeChild(a);closeModal();
-}
 </script>
 </body>
 </html>

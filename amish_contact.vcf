@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:FCA Amish Natvarlal Mehta
+N:Mehta;Amish;Natvarlal;;FCA
+ORG:A. N. Mehta & Co.;Chartered Accountants
+TITLE:Founding Partner
+TEL;TYPE=WORK,VOICE:+919831021974
+TEL;TYPE=CELL:+919831021974
+EMAIL;TYPE=WORK,INTERNET:info.anmehtaco@gmail.com
+ADR;TYPE=WORK:;;Siddha Esplanade\, 6 Jawaharlal Nehru Road\, 10th Floor\, Suite 1008;Kolkata;;700013;India
+URL:https://anmehtaco.com
+NOTE:FCA · BCom (H) · Founding Partner · A. N. Mehta & Co. · Chartered Accountants · Kolkata
+PHOTO;VALUE=URL:https://anmehtaco.com/AMISH_MEHTA_PIC.jpeg
+END:VCARD
